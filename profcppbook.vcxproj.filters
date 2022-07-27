@@ -15,10 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="helloworld.cpp">
+    <ClCompile Include="employee.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="employee.ixx">
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="employee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeaderUnits.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

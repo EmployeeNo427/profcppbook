@@ -132,9 +132,9 @@
   <ItemGroup>
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="Database.ixx" />
+    <ClCompile Include="DatabaseTest.cpp" />
     <ClCompile Include="employee.cpp" />
     <ClCompile Include="employee.ixx" />
-    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HeaderUnits.h">

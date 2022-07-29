@@ -28,4 +28,9 @@ namespace Records {
 			if (employee.isHired()) { employee.display(); }
 		}
 	}
+	void Database::displayFormer() const {
+		for (const auto& employee : m_employees) {
+			if (!employee.isHired()) { employee.display(); }
+		}
+	}
 }

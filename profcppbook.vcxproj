@@ -104,8 +104,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <EnableModules>true</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,12 +131,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="employee.ixx" />
+    <ClCompile Include="airline_ticket.cpp" />
+    <ClCompile Include="airline_ticket.ixx" />
+    <ClCompile Include="database.cpp" />
+    <ClCompile Include="database.ixx" />
+    <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="Employee.ixx" />
+    <ClCompile Include="exercise_employee.ixx" />
     <ClCompile Include="HeaderUnits.h">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsHeaderUnit</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsHeaderUnit</CompileAs>
     </ClCompile>
+    <ClCompile Include="hello_world.ixx" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Spreadsheet.ixx" />
+    <ClCompile Include="spreadsheet_cell.cpp" />
+    <ClCompile Include="spreadsheet_cell.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

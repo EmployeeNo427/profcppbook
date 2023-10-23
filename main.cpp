@@ -12,6 +12,7 @@ import exercise_employee;
 import database;
 import spreadsheet_cell;
 import Spreadsheet;
+import person;
 import std;
 
 
@@ -351,6 +352,46 @@ void ex8_4_answer() {
 	copy = otherPerson;
 }
 
+Person createPerson()
+{
+	return Person{ "cole", "fuio"};
+}
+
+void ex9_1() {
+	vector<Person> vec;
+	for (size_t i{ 0 }; i < 2; ++i) {
+		cout << "Iteration " << i << endl;
+		vec.push_back(Person{ "vec", "tone"});
+		cout << endl;
+	}
+
+	Person s{ "what", "cold"};
+	s = createPerson();
+
+	Person s2{ "what", "cold" };
+	s2 = s;
+}
+
+void ex9_1_answer() {
+	Person person{ "John", "Doe" };
+	cout << format("{} {} {}", person.get_first_name(), person.get_last_name(), person.get_initials()) << endl;
+
+	Person persons[3];
+
+	// Test copy constructor.
+	Person copy{ person };
+
+	// Test assignment operator.
+	Person otherPerson{ "Jane", "Doe" };
+	copy = otherPerson;
+
+	// Test move construction.
+	Person movedToPerson{ std::move(copy) };
+
+	// Test move assignment.
+	movedToPerson = std::move(person);
+}
+
 
 int main() {
 
@@ -415,18 +456,17 @@ int main() {
 	ex8_4();
 	ex8_4_answer();
 
-	Spreadsheet sheet1{ 5, 6 };
-	SpreadsheetCell& cell1{ sheet1.getCellAt(1, 1) };
-
-	const Spreadsheet sheet2{ 5, 6 };
-	const SpreadsheetCell& cell2{ sheet2.getCellAt(1, 1) };
+	SpreadsheetApplication app;
+	Spreadsheet s1{ 2, 3, app };
+	Spreadsheet s2{ 3, 4, app };
 
 	SpreadsheetCell myCell3{ 5 };
 	myCell3.setColor(SpreadsheetCell::Color::Blue);
 	auto color{ myCell3.getColor() };
 
 
-
+	ex9_1();
+	ex9_1_answer();
 
 
 

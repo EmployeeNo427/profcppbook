@@ -66,45 +66,4 @@ private:
     std::vector<double> m_sequence;
 };
 
-export class Person
-{
-public:
-    Person(std::string_view first_name, std::string_view last_name, std::string_view initials)
-        :m_first_name{ first_name }, m_last_name{ last_name }, m_initials{ initials } {}
-    Person(std::string_view first_name, std::string_view last_name)
-        :Person{ first_name ,last_name, std::format("{}{}.", first_name[0], last_name[0]) } {}
-    Person() = default;
-    /*Person()
-        :m_first_name{ "N/A first name" }, m_last_name{ "N/A last name" } {}
-    Person(const Person& src)
-        :m_first_name{ src.m_first_name }, m_last_name{ src.m_last_name }
-    {
-        std::cout <<"Copy constructor called with src argument " << src.get_first_name() << ", "<<
-            src.get_last_name()<<std::endl;
-    }
-    Person& operator=(const Person& rhs) {
-        if (this == &rhs) {
-            return *this;
-        }
-        m_first_name = rhs.get_first_name();
-        m_last_name = rhs.get_last_name();
-
-        std::cout << "Assignment Operator called with rhs argument " << rhs.get_first_name() << ", " <<
-            rhs.get_last_name() << std::endl;
-        return *this;
-
-    };
-    ~Person() {
-        std::cout << "Destructor of Person called."  << std::endl;
-    }*/
-    void set_first_name(std::string_view first_name) { m_first_name = first_name; }
-    void set_last_name(std::string_view last_name) { m_last_name = last_name; }
-    void set_initials(std::string_view initials) { m_initials = initials; }
-    std::string_view get_first_name() const { return m_first_name; }
-    std::string_view get_last_name() const { return m_last_name; }
-    std::string_view get_initials() const { return m_initials; }
-private:
-    std::string m_first_name, m_last_name, m_initials;
-};
-
 

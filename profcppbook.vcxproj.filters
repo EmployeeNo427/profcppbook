@@ -57,5 +57,8 @@
     <ClCompile Include="Spreadsheet.ixx">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Person.ixx">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

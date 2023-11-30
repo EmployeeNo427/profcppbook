@@ -13,6 +13,7 @@ import database;
 import spreadsheet_cell;
 import Spreadsheet;
 import person;
+import ch12_exercise;
 import std;
 
 
@@ -20,6 +21,8 @@ import std;
 
 using namespace std;
 using namespace Records;
+
+
 
 int displayMenu();
 void doHire(Database& db);
@@ -395,78 +398,85 @@ void ex9_1_answer() {
 
 int main() {
 
-	array<int, 10> values{};
-	for (int index{ 0 }; index < values.size(); ++index) {
-		values.at(index) = index;
-	}
-	values.back() = 99;
-	for (auto x:values) {
-		cout << x << " ";
-	}
+	ex12_1::test();
+	ex12_2::test();
+	ex12_3::test();
+	ex12_4::test();
+	ex12_5::test();
+	ex12_6::TestFind();
 
-	auto myP3dSmartPtr{ make_unique<Point_3d>(1.34535,2.12334,3.41121224463456) };
-	print_point_3d(*myP3dSmartPtr);
+	//array<int, 10> values{};
+	//for (int index{ 0 }; index < values.size(); ++index) {
+	//	values.at(index) = index;
+	//}
+	//values.back() = 99;
+	//for (auto x:values) {
+	//	cout << x << " ";
+	//}
 
-	string str{ "Hello World!" };
-	cout << "Before: " << str << endl;
-	fillWithM(str);
-	cout << "After: " << str << endl;
+	//auto myP3dSmartPtr{ make_unique<Point_3d>(1.34535,2.12334,3.41121224463456) };
+	//print_point_3d(*myP3dSmartPtr);
 
-	SpreadsheetCell myCell, anotherCell;
-	myCell.setValue(6);
-	anotherCell.setString("3.2");
-	cout << "cell 1: " << myCell.getValue() << endl;
-	cout << "cell 2: " << anotherCell.getValue() << endl;
+	//string str{ "Hello World!" };
+	//cout << "Before: " << str << endl;
+	//fillWithM(str);
+	//cout << "After: " << str << endl;
 
-	auto myCellp{ make_unique<SpreadsheetCell>() };
-	// Equivalent to:
-	// unique_ptr<SpreadsheetCell> myCellp { new SpreadsheetCell { } };
-	myCellp->setValue(3.7);
-	cout << "cell 1: " << myCellp->getValue() <<
-		" " << myCellp->getString() << endl;
+	//SpreadsheetCell myCell, anotherCell;
+	//myCell.setValue(6);
+	//anotherCell.setString("3.2");
+	//cout << "cell 1: " << myCell.getValue() << endl;
+	//cout << "cell 2: " << anotherCell.getValue() << endl;
 
-	SpreadsheetCell mycell(5), anothercell(4);
-	cout << "cell 1: " << mycell.getValue() << endl;
-	cout << "cell 2: " << anothercell.getValue() << endl;
+	//auto myCellp{ make_unique<SpreadsheetCell>() };
+	//// Equivalent to:
+	//// unique_ptr<SpreadsheetCell> myCellp { new SpreadsheetCell { } };
+	//myCellp->setValue(3.7);
+	//cout << "cell 1: " << myCellp->getValue() <<
+	//	" " << myCellp->getString() << endl;
 
-	SpreadsheetCell aThirdCell{ "test" };  // Uses string-arg ctor
-	SpreadsheetCell aFourthCell{ 4.4 };    // Uses double-arg ctor
-	auto aFifthCellp{ make_unique<SpreadsheetCell>("5.5") }; // string-arg ctor
-	cout << "aThirdCell: " << aThirdCell.getValue() << endl;
-	cout << "aFourthCell: " << aFourthCell.getValue() << endl;
-	cout << "aFifthCellp: " << aFifthCellp->getValue() << endl;
+	//SpreadsheetCell mycell(5), anothercell(4);
+	//cout << "cell 1: " << mycell.getValue() << endl;
+	//cout << "cell 2: " << anothercell.getValue() << endl;
 
-	SpreadsheetCell myCell2;
-	myCell2.setValue(6);
-	cout << "cell 1: " << myCell2.getValue() << endl;
+	//SpreadsheetCell aThirdCell{ "test" };  // Uses string-arg ctor
+	//SpreadsheetCell aFourthCell{ 4.4 };    // Uses double-arg ctor
+	//auto aFifthCellp{ make_unique<SpreadsheetCell>("5.5") }; // string-arg ctor
+	//cout << "aThirdCell: " << aThirdCell.getValue() << endl;
+	//cout << "aFourthCell: " << aFourthCell.getValue() << endl;
+	//cout << "aFifthCellp: " << aFifthCellp->getValue() << endl;
 
-	EvenSequence p1{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
-	p1.dump();
+	//SpreadsheetCell myCell2;
+	//myCell2.setValue(6);
+	//cout << "cell 1: " << myCell2.getValue() << endl;
 
-	try {
-		EvenSequence p2{ 1.0, 2.0, 3.0 };
-	}
-	catch (const invalid_argument& e) {
-		cout << e.what() << endl;
-	}
+	//EvenSequence p1{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
+	//p1.dump();
 
-	ex8_1();
-	ex8_2();
-	ex8_3();
-	ex8_4();
-	ex8_4_answer();
+	//try {
+	//	EvenSequence p2{ 1.0, 2.0, 3.0 };
+	//}
+	//catch (const invalid_argument& e) {
+	//	cout << e.what() << endl;
+	//}
 
-	SpreadsheetApplication app;
-	Spreadsheet s1{ 2, 3, app };
-	Spreadsheet s2{ 3, 4, app };
+	//ex8_1();
+	//ex8_2();
+	//ex8_3();
+	//ex8_4();
+	//ex8_4_answer();
 
-	SpreadsheetCell myCell3{ 5 };
-	myCell3.setColor(SpreadsheetCell::Color::Blue);
-	auto color{ myCell3.getColor() };
+	//SpreadsheetApplication app;
+	//Spreadsheet s1{ 2, 3, app };
+	//Spreadsheet s2{ 3, 4, app };
+
+	//SpreadsheetCell myCell3{ 5 };
+	//myCell3.setColor(SpreadsheetCell::Color::Blue);
+	//auto color{ myCell3.getColor() };
 
 
-	ex9_1();
-	ex9_1_answer();
+	//ex9_1();
+	//ex9_1_answer();
 
 
 
@@ -594,7 +604,7 @@ int main() {
 	//test_format_specifier();
 	//test_format_specifier_zeros();
 
-	return 0;
+	//return 0;
 	
 }
 

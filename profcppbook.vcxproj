@@ -147,6 +147,7 @@
     <ClCompile Include="airline_ticket.cpp" />
     <ClCompile Include="airline_ticket.ixx" />
     <ClCompile Include="ch12_exercise.ixx" />
+    <ClCompile Include="ch13_example.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />

@@ -14,6 +14,7 @@ import spreadsheet_cell;
 import Spreadsheet;
 import person;
 import ch12_exercise;
+import ch13_example;
 import std;
 
 
@@ -398,12 +399,22 @@ void ex9_1_answer() {
 
 int main() {
 
-	ex12_1::test();
+	/*ch13_bookcode::code_1();
+	ch13_bookcode::code_2();
+	ch13_bookcode::code_3();*/
+	//ch13_bookcode::getReservationData();
+	//ch13_bookcode::calculateSumFromCin();
+	//ch13_bookcode::code_4();
+	//ch13_bookcode::code_5();
+	//ch13_bookcode::exercises::ex1::test();
+	ch13_bookcode::exercises::ex2::test();
+	
+	/*ex12_1::test();
 	ex12_2::test();
 	ex12_3::test();
 	ex12_4::test();
 	ex12_5::test();
-	ex12_6::TestFind();
+	ex12_6::TestFind();*/
 
 	//array<int, 10> values{};
 	//for (int index{ 0 }; index < values.size(); ++index) {

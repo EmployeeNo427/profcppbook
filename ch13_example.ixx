@@ -391,5 +391,311 @@ export namespace ch13_bookcode{
 				if (person != person2) { cout << "person != person2" << endl; }
 			}
 		}
+		namespace ex3 {
+			class Person
+			{
+			public:
+				// Two-parameter constructor automatically creates initials and
+				// delegates the work to the three-parameter constructor.
+				Person(std::string firstName, std::string lastName)
+					: Person{ std::move(firstName), std::move(lastName),
+					std::format("{}{}", firstName[0], lastName[0]) }
+				{
+				}
+
+				Person() = default;
+
+				Person(std::string firstName, std::string lastName, std::string initials)
+					: m_firstName{ std::move(firstName) }
+					, m_lastName{ std::move(lastName) }
+					, m_initials{ std::move(initials) }
+				{
+				}
+
+				const std::string& getFirstName() const { return m_firstName; }
+				void setFirstName(std::string firstName) { m_firstName = std::move(firstName); }
+
+				const std::string& getLastName() const { return m_lastName; }
+				void setLastName(std::string lastName) { m_lastName = std::move(lastName); }
+
+				const std::string& getInitials() const { return m_initials; }
+				void setInitials(std::string initials) { m_initials = std::move(initials); }
+
+				void output(ostream& ost) const {
+					ost << format("First name:{}\nLast name:{}\nInitials:{}\n", this->getFirstName(), this->getLastName(), this->getInitials());
+				}
+
+				//// Only this single line of code is needed to add support
+				//// for all six comparison operators.
+				[[nodiscard]] auto operator<=>(const Person&) const = default;
+
+			private:
+				std::string m_firstName;
+				std::string m_lastName;
+				std::string m_initials;
+			};
+			class Database {
+			public:
+				void add(Person p) {
+					vp.push_back(move(p));
+				}
+				int save(string_view file_path) {
+					ofstream outFile{ static_cast<string>(file_path), ios_base::trunc };
+					if (!outFile.good()) {
+						cerr << "Error while opening output file!" << endl;
+						return -1;
+					}
+					for (const auto& p : vp) {
+						p.output(outFile);
+					}
+					return 0;
+				}
+				int load(string_view file_path) {
+					vector<Person> persons;
+					ifstream inFile{ static_cast<string>(file_path) };
+					if (!inFile.good()) {
+						cerr << "Error while opening input file!" << endl;
+						return -1;
+					}
+					string line, key, value;
+					string firstName, lastName, initials;
+					while (getline(inFile,line)) {
+						stringstream ss{ line };
+						getline(ss, key, ':');
+						getline(ss, value);
+
+						if (key == "First name") {
+							if (!firstName.empty()) {
+								vp.emplace_back(firstName, lastName, initials);
+								firstName.clear();
+								lastName.clear();
+								initials.clear();
+							}
+							firstName = value;
+						}
+						else if (key == "Last name") {
+							lastName = value;
+						}
+						else if (key == "Initials") {
+							initials = value;
+						}
+					}
+					if (!firstName.empty()) {
+						vp.emplace_back(firstName, lastName, initials);
+					}
+					return 0;
+				}
+				void clear() {
+					vp.clear();
+				}
+				void outputAll(ostream& ost) const {
+					for (const auto& p : vp) {
+						p.output(ost);
+					}
+				}
+			private:
+				vector<Person> vp{};
+			};
+			void test() {
+				Person person1{ "John", "Doe" };
+				Person person2{ "Marc", "Gregoire", "Mg" };
+				Person person3{ "Zijian", "Guan", "Zj" };
+				Person person4{ "Nutrition", "Facts"};
+				Database db, db2;
+
+				db.add(person1);
+				db.add(person2);
+				db.add(person3);
+				db.add(person4);
+				db.save("test.txt");
+
+				db2.load("test.txt");
+				db.clear();
+
+				cout << "db:" << endl;
+				db.outputAll(cout);
+				cout << "db2:" << endl;
+				db2.outputAll(cout);
+			}
+			void answer_test() {
+				// Fill a database.
+				Database db;
+				db.add(Person{ "John", "Doe" });
+				db.add(Person{ "Marc", "Gregoire", "Mg" });
+				db.add(Person{ "Peter", "Van Weert", "PVW" });
+
+				// Output all persons in the database to standard output.
+				cout << "Initial database contents:" << endl;
+				db.outputAll(cout);
+
+				// Save the database to a file.
+				db.save("person.db");
+
+				// Clear the database.
+				db.clear();
+				cout << "\nDatabase contents after clearing:" << endl;
+				db.outputAll(cout);
+
+				// Load database from file.
+				cout << "\nLoading database from file..." << endl;
+				db.load("person.db");
+				cout << "\nDatabase contents after loading from file:" << endl;
+				db.outputAll(cout);
+			}
+		}
+		namespace ex4 {
+			class Person
+			{
+			public:
+				// Two-parameter constructor automatically creates initials and
+				// delegates the work to the three-parameter constructor.
+				Person(std::string firstName, std::string lastName)
+					: Person{ std::move(firstName), std::move(lastName),
+					std::format("{}{}", firstName[0], lastName[0]) }
+				{
+				}
+
+				Person() = default;
+
+				Person(std::string firstName, std::string lastName, std::string initials)
+					: m_firstName{ std::move(firstName) }
+					, m_lastName{ std::move(lastName) }
+					, m_initials{ std::move(initials) }
+				{
+				}
+
+				const std::string& getFirstName() const { return m_firstName; }
+				void setFirstName(std::string firstName) { m_firstName = std::move(firstName); }
+
+				const std::string& getLastName() const { return m_lastName; }
+				void setLastName(std::string lastName) { m_lastName = std::move(lastName); }
+
+				const std::string& getInitials() const { return m_initials; }
+				void setInitials(std::string initials) { m_initials = std::move(initials); }
+
+				void output(ostream& ost) const {
+					ost << format("First name:{}\nLast name:{}\nInitials:{}\n", this->getFirstName(), this->getLastName(), this->getInitials());
+				}
+
+				//// Only this single line of code is needed to add support
+				//// for all six comparison operators.
+				[[nodiscard]] auto operator<=>(const Person&) const = default;
+
+			private:
+				std::string m_firstName;
+				std::string m_lastName;
+				std::string m_initials;
+			};
+			class Database {
+			public:
+				void add(Person p) {
+					vp.push_back(move(p));
+				}
+				int save(const path& file_directory) {
+					if (!exists(file_directory)) {
+						if (!create_directory(file_directory)) {
+							cerr << "Failed to create directory: " << file_directory << endl;
+							return -1;
+						}
+					}
+					for (const auto& p : vp) {
+						const path& path_for_name{ file_directory / (p.getInitials() + ".person") };
+						ofstream file_for_output{ path_for_name, ios_base::trunc };
+						if (!file_for_output) {
+							cerr << "Cannot open file: " << path_for_name << endl;
+							return -1;
+						}
+						p.output(file_for_output);
+					}
+					return 0;
+				}
+				int load(const path& file_directory) {
+					vector<Person> persons;
+
+					if (!exists(file_directory)) {
+						return -1;
+					}
+
+					recursive_directory_iterator begin{ file_directory };
+					recursive_directory_iterator end{ };
+					for (auto iter{ begin }; iter != end; ++iter) {
+						auto& entry{ *iter }; // Dereference iter to access directory_entry.
+						if (is_regular_file(entry) && entry.path().extension() == ".person") {
+							ifstream inFile{ entry.path() };
+							if (!inFile.good()) {
+								cerr << "Error while opening input file!" << endl;
+								return -1;
+							}
+							string line, key, value;
+							string firstName, lastName, initials;
+							while (getline(inFile, line)) {
+								stringstream ss{ line };
+								getline(ss, key, ':');
+								getline(ss, value);
+
+								if (key == "First name") {
+									if (!firstName.empty()) {
+										vp.emplace_back(firstName, lastName, initials);
+										firstName.clear();
+										lastName.clear();
+										initials.clear();
+									}
+									firstName = value;
+								}
+								else if (key == "Last name") {
+									lastName = value;
+								}
+								else if (key == "Initials") {
+									initials = value;
+								}
+							}
+							if (!firstName.empty()) {
+								vp.emplace_back(firstName, lastName, initials);
+							}
+						}
+						else if (is_directory(entry)) {
+							cout << format("Not supposed to have directories") << endl;
+						}
+					}
+
+					return 0;
+				}
+				void clear() {
+					vp.clear();
+				}
+				void outputAll(ostream& ost) const {
+					for (const auto& p : vp) {
+						p.output(ost);
+					}
+				}
+			private:
+				vector<Person> vp{};
+			};
+			void test() {
+				// Fill a database.
+				Database db;
+				db.add(Person{ "John", "Doe" });
+				db.add(Person{ "Marc", "Gregoire", "Mg" });
+				db.add(Person{ "Peter", "Van Weert", "PVW" });
+
+				// Output all persons in the database to standard output.
+				cout << "Initial database contents:" << endl;
+				db.outputAll(cout);
+
+				// Save the database to a file.
+				db.save(R"(D:\cppliblearn\professionalcppbook\profcppbook\ch13_ex4_output)");
+
+				// Clear the database.
+				db.clear();
+				cout << "\nDatabase contents after clearing:" << endl;
+				db.outputAll(cout);
+
+				// Load database from file.
+				cout << "\nLoading database from file..." << endl;
+				db.load(R"(D:\cppliblearn\professionalcppbook\profcppbook\ch13_ex4_output)");
+				cout << "\nDatabase contents after loading from file:" << endl;
+				db.outputAll(cout);
+			}
+		}
 	}
 };

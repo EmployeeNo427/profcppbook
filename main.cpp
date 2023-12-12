@@ -407,7 +407,10 @@ int main() {
 	//ch13_bookcode::code_4();
 	//ch13_bookcode::code_5();
 	//ch13_bookcode::exercises::ex1::test();
-	ch13_bookcode::exercises::ex2::test();
+	//ch13_bookcode::exercises::ex2::test();
+	//ch13_bookcode::exercises::ex3::test();
+	//ch13_bookcode::exercises::ex3::answer_test();
+	ch13_bookcode::exercises::ex4::test();
 	
 	/*ex12_1::test();
 	ex12_2::test();

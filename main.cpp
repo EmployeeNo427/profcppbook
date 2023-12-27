@@ -15,6 +15,7 @@ import Spreadsheet;
 import person;
 import ch12_exercise;
 import ch13_example;
+import ch14_exercise;
 import std;
 
 
@@ -399,6 +400,11 @@ void ex9_1_answer() {
 
 int main() {
 
+	
+	//ch14_exercise::ex2::test();
+	//ch14_exercise::ex3::test();
+	ch14_exercise::ex4::test();
+	
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();
 	ch13_bookcode::code_3();*/
@@ -410,7 +416,7 @@ int main() {
 	//ch13_bookcode::exercises::ex2::test();
 	//ch13_bookcode::exercises::ex3::test();
 	//ch13_bookcode::exercises::ex3::answer_test();
-	ch13_bookcode::exercises::ex4::test();
+	//ch13_bookcode::exercises::ex4::test();
 	
 	/*ex12_1::test();
 	ex12_2::test();

@@ -598,68 +598,54 @@ export namespace ch13_bookcode{
 							return -1;
 						}
 					}
+
 					for (const auto& p : vp) {
-						const path& path_for_name{ file_directory / (p.getInitials() + ".person") };
-						ofstream file_for_output{ path_for_name, ios_base::trunc };
+						path path_for_name = file_directory / (p.getInitials() + ".person");
+						ofstream file_for_output(path_for_name, ios_base::trunc);
 						if (!file_for_output) {
 							cerr << "Cannot open file: " << path_for_name << endl;
-							return -1;
+							continue; // Skip this person and continue with the next
 						}
-						p.output(file_for_output);
+
+						file_for_output << quoted(p.getFirstName()) << " "
+							<< quoted(p.getLastName()) << " "
+							<< quoted(p.getInitials()) << endl;
 					}
 					return 0;
 				}
 				int load(const path& file_directory) {
-					vector<Person> persons;
-
 					if (!exists(file_directory)) {
+						cerr << "Directory does not exist: " << file_directory << endl;
 						return -1;
 					}
 
-					recursive_directory_iterator begin{ file_directory };
-					recursive_directory_iterator end{ };
-					for (auto iter{ begin }; iter != end; ++iter) {
-						auto& entry{ *iter }; // Dereference iter to access directory_entry.
-						if (is_regular_file(entry) && entry.path().extension() == ".person") {
-							ifstream inFile{ entry.path() };
+					for (const auto& entry : directory_iterator(file_directory)) {
+						if (entry.is_regular_file() && entry.path().extension() == ".person") {
+							ifstream inFile(entry.path());
 							if (!inFile.good()) {
-								cerr << "Error while opening input file!" << endl;
-								return -1;
+								cerr << "Error while opening input file: " << entry.path() << endl;
+								continue; // Skip this file and continue with the next one
 							}
-							string line, key, value;
-							string firstName, lastName, initials;
-							while (getline(inFile, line)) {
-								stringstream ss{ line };
-								getline(ss, key, ':');
-								getline(ss, value);
 
-								if (key == "First name") {
-									if (!firstName.empty()) {
-										vp.emplace_back(firstName, lastName, initials);
-										firstName.clear();
-										lastName.clear();
-										initials.clear();
-									}
-									firstName = value;
-								}
-								else if (key == "Last name") {
-									lastName = value;
-								}
-								else if (key == "Initials") {
-									initials = value;
-								}
+							string line;
+							getline(inFile, line);
+							if (line.empty()) continue; // Skip empty lines
+
+							istringstream inLine(line);
+							string firstName, lastName, initials;
+							inLine >> quoted(firstName) >> quoted(lastName) >> quoted(initials);
+							if (inLine.bad()) {
+								cerr << "Error reading person from file: " << entry.path() << endl;
+								continue;
 							}
-							if (!firstName.empty()) {
-								vp.emplace_back(firstName, lastName, initials);
-							}
-						}
-						else if (is_directory(entry)) {
-							cout << format("Not supposed to have directories") << endl;
+
+							vp.emplace_back(move(firstName), move(lastName), move(initials));
 						}
 					}
 
 					return 0;
 				}
+
 				void clear() {
 					vp.clear();
 				}

@@ -148,6 +148,7 @@
     <ClCompile Include="airline_ticket.ixx" />
     <ClCompile Include="ch12_exercise.ixx" />
     <ClCompile Include="ch13_example.ixx" />
+    <ClCompile Include="ch14_exercise.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />
@@ -167,6 +168,9 @@
     <ClCompile Include="Spreadsheet.ixx" />
     <ClCompile Include="spreadsheet_cell.cpp" />
     <ClCompile Include="spreadsheet_cell.ixx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

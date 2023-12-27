@@ -66,5 +66,11 @@
     <ClCompile Include="ch13_example.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ch14_exercise.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data.txt" />
   </ItemGroup>
 </Project>

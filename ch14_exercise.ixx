@@ -311,10 +311,11 @@ export namespace ch14_exercise {
 
 			void swap(Spreadsheet& other) noexcept;
 
-			static const size_t m_maxwidth{ 100 };
-			static const size_t m_maxheight{ 100 };
+			static const size_t m_maxwidth{ 500 };
+			static const size_t m_maxheight{ 500 };
 
 		private:
+			void cleanup() noexcept;
 			void verifyCoordinate(size_t x, size_t y) const;
 
 			size_t m_width{ 0 };
@@ -331,16 +332,18 @@ export namespace ch14_exercise {
 				m_width{ width }, 
 				m_height{ height },
 				m_maxwidth{ maxwidth },
-				m_maxheight{ maxheight } {}
+				m_maxheight{ maxheight } 
+			{
+				m_message = format("Allowed range:[0-{})*[0-{}), but received {}*{}",
+					m_maxwidth, m_maxheight, m_width, m_height);
+			}
 			const char* what() const noexcept override { return m_message.c_str(); }
 		private:
 			size_t m_width{ 0 };
 			size_t m_height{ 0 };
 			size_t m_maxwidth{ 0 };
 			size_t m_maxheight{ 0 };
-			string m_message{
-				format("Allowed range:[0-{})*[0-{}), but received {}*{}",m_maxwidth,m_maxheight,m_width,m_height)
-			};
+			string m_message;
 		};
 
 		SpreadsheetCell::SpreadsheetCell(double initialValue)
@@ -386,33 +389,47 @@ export namespace ch14_exercise {
 		}
 
 		Spreadsheet::Spreadsheet(size_t width, size_t height)
-		try
-			: m_width{ width }
-			, m_height{ height }
 		{
 			cout << "Normal constructor" << endl;
 
-			m_cells = new SpreadsheetCell * [m_width];
-			for (size_t i{ 0 }; i < m_width; i++) {
-				m_cells[i] = new SpreadsheetCell[m_height];
+			if (width > m_maxwidth || height > m_maxheight) {
+				throw InvalidCoordinate{ width, height, m_maxwidth, m_maxheight };
 			}
-		}
-		catch (const exception& e) {
-			cerr << format("Caught exception in Spreadsheet::Spreadsheet(size_t width, size_t height): {}", e.what()) << endl;
+
+			m_cells = new SpreadsheetCell * [m_width];
+
+			//only set width and height only allocation succeed.
+			m_width = width;
+			m_height = height;
+			try {
+				for (size_t i{ 0 }; i < m_width; i++) {
+					m_cells[i] = new SpreadsheetCell[m_height];
+				}
+			}
+			catch (...) {
+				cleanup();
+				throw_with_nested(bad_alloc{});
+			}
 		}
 
 		Spreadsheet::~Spreadsheet()
 		{
 			try {
-				for (size_t i{ 0 }; i < m_width; i++) {
-					delete[] m_cells[i];
-				}
-				delete[] m_cells;
-				m_cells = nullptr;
+				cleanup();
 			}
 			catch (const exception& e) {
 				cerr << format("Caught exception in Spreadsheet::~Spreadsheet(): {}, delete failed", e.what()) << endl;
 			}
+		}
+
+		void Spreadsheet::cleanup() noexcept
+		{
+			for (size_t i{ 0 }; i < m_width; i++) {
+				delete[] m_cells[i];
+			}
+			delete[] m_cells;
+			m_cells = nullptr;
+			m_width = m_height = 0;
 		}
 
 		Spreadsheet::Spreadsheet(const Spreadsheet& src)
@@ -515,6 +532,13 @@ export namespace ch14_exercise {
 			}
 			catch (const exception& e) {
 				cerr << format("Caught exception for getCellAt: {}", e.what()) << endl;
+			}
+
+			try {
+				Spreadsheet s{ 500, 556 };
+			}
+			catch (const exception& e) {
+				cerr << format("Caught exception for Spreadsheet s{ 500, 556 }: {}", e.what()) << endl;
 			}
 
 			try {

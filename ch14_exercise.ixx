@@ -311,8 +311,8 @@ export namespace ch14_exercise {
 
 			void swap(Spreadsheet& other) noexcept;
 
-			static const size_t m_maxwidth{ 500 };
-			static const size_t m_maxheight{ 500 };
+			static const size_t m_maxwidth{ 100 };
+			static const size_t m_maxheight{ 100 };
 
 		private:
 			void cleanup() noexcept;
@@ -396,7 +396,7 @@ export namespace ch14_exercise {
 				throw InvalidCoordinate{ width, height, m_maxwidth, m_maxheight };
 			}
 
-			m_cells = new SpreadsheetCell * [m_width];
+			m_cells = new SpreadsheetCell * [width] {};
 
 			//only set width and height only allocation succeed.
 			m_width = width;
@@ -535,19 +535,35 @@ export namespace ch14_exercise {
 			}
 
 			try {
-				Spreadsheet s{ 500, 556 };
-			}
-			catch (const exception& e) {
-				cerr << format("Caught exception for Spreadsheet s{ 500, 556 }: {}", e.what()) << endl;
-			}
-
-			try {
 				Spreadsheet s{ 50, 30 };
 				s.setCellAt(25, 15, SpreadsheetCell{ 2 });
 				s.setCellAt(53, 33, SpreadsheetCell{ 6 });
 			}
 			catch (const exception& e) {
 				cerr << format("Caught exception for setCellAt: {}", e.what()) << endl;
+			}
+
+			try {
+				Spreadsheet s{ 100, 256 };
+			}
+			catch (const exception& caughtException) {
+				cerr << caughtException.what() << endl;
+			}
+
+			try {
+				Spreadsheet s{ 49, 49 };
+				auto& cell = s.getCellAt(55, 55);
+			}
+			catch (const exception& caughtException) {
+				cerr << caughtException.what() << endl;
+			}
+
+			try {
+				Spreadsheet s{ 49, 49 };
+				s.setCellAt(55, 55, SpreadsheetCell{ 1.2 });
+			}
+			catch (const exception& caughtException) {
+				cerr << caughtException.what() << endl;
 			}
 		}
 	}

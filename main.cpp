@@ -16,6 +16,7 @@ import person;
 import ch12_exercise;
 import ch13_example;
 import ch14_exercise;
+import ch15;
 import std;
 
 
@@ -403,7 +404,11 @@ int main() {
 	
 	//ch14_exercise::ex2::test();
 	//ch14_exercise::ex3::test();
-	ch14_exercise::ex4::test();
+	//ch14_exercise::ex4::test();
+	//ch15::examples::overload_subscript_original::test();
+	//ch15::examples::overload_subscript::test();
+	ch15::exercises::ex1::test();
+	ch15::exercises::ex1::test_textbook();
 	
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

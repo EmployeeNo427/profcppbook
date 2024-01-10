@@ -407,8 +407,10 @@ int main() {
 	//ch14_exercise::ex4::test();
 	//ch15::examples::overload_subscript_original::test();
 	//ch15::examples::overload_subscript::test();
-	ch15::exercises::ex1::test();
-	ch15::exercises::ex1::test_textbook();
+	//ch15::exercises::ex1::test();
+	//ch15::exercises::ex1::test_textbook();
+	ch15::exercises::ex2::test();
+	ch15::exercises::ex2::test_textbook();
 	
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

@@ -296,5 +296,102 @@ export namespace ch15 {
                 }
             }
         }
+        namespace ex2 {
+            using namespace std;
+            class Person
+            {
+            public:
+                // Two-parameter constructor automatically creates initials and
+                // delegates the work to the three-parameter constructor.
+                Person(std::string firstName, std::string lastName)
+                    : Person{ std::move(firstName), std::move(lastName),
+                    std::format("{}{}", firstName[0], lastName[0]) }
+                {
+                }
+
+                Person() = default;
+
+                Person(std::string firstName, std::string lastName, std::string initials)
+                    : m_firstName{ std::move(firstName) }
+                    , m_lastName{ std::move(lastName) }
+                    , m_initials{ std::move(initials) }
+                {
+                }
+
+                const std::string& getFirstName() const { return m_firstName; }
+                void setFirstName(std::string firstName) { m_firstName = std::move(firstName); }
+
+                const std::string& getLastName() const { return m_lastName; }
+                void setLastName(std::string lastName) { m_lastName = std::move(lastName); }
+
+                const std::string& getInitials() const { return m_initials; }
+                void setInitials(std::string initials) { m_initials = std::move(initials); }
+
+                void output(std::ostream& output) const
+                {
+                    output << std::format("{} {} ({})",
+                        getFirstName(), getLastName(), getInitials()) << std::endl;
+                }
+
+                // Only this single line of code is needed to add support
+                // for all six comparison operators.
+                [[nodiscard]] auto operator<=>(const Person&) const = default;
+
+            private:
+                std::string m_firstName;
+                std::string m_lastName;
+                std::string m_initials;
+            };
+            ostream& operator<<(ostream& ostr, const Person& person)
+            {
+                ostr << quoted(person.getFirstName())<< quoted(person.getLastName())<< quoted(person.getInitials());
+                return ostr;
+            }
+
+            istream& operator>>(istream& istr, Person& person)
+            {
+                string firstname, lastname, initials;
+                istr >> quoted(firstname) >> quoted(lastname) >> quoted(initials);
+                person.setFirstName(move(firstname));
+                person.setLastName(move(lastname));
+                person.setInitials(move(initials));
+                return istr;
+            }
+
+            void test() {
+                cout << Person{ "John", "Doe" } << endl;
+                ofstream outFile{ "person_ch15.txt" };
+                outFile << Person{ "John", "Doe" } 
+                << Person{ "Pohn", "Poe" }
+                << Person{ "Womw", "Ouch" }
+                << endl;
+
+                ifstream inFile{ "person_ch15.txt" };
+                Person inPerson1, inPerson2, inPerson3;
+                inFile >> inPerson1 >> inPerson2 >> inPerson3;
+                cout << "First person: "<<inPerson1 << "Second person: " << inPerson2 <<"Third person: " << inPerson3 << endl;
+            }
+
+            void test_textbook() {
+                Person person{ "John", "Doe" };
+
+                // Write person to standard output console.
+                cout << person << endl;
+
+                // Write person to a string stream.
+                ostringstream output;
+                output << person;
+                // Verify the contents of the string stream.
+                cout << output.str() << endl;
+
+                // Read the person back from the string stream.
+                istringstream input{ output.str() };
+                Person person2;
+                input >> person2;
+
+                // Verify the read-back person.
+                cout << person2 << endl;
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ import ch12_exercise;
 import ch13_example;
 import ch14_exercise;
 import ch15;
+import ch17;
 import std;
 
 
@@ -409,8 +410,17 @@ int main() {
 	//ch15::examples::overload_subscript::test();
 	//ch15::exercises::ex1::test();
 	//ch15::exercises::ex1::test_textbook();
-	ch15::exercises::ex2::test();
-	ch15::exercises::ex2::test_textbook();
+	/*ch15::exercises::ex2::test();
+	ch15::exercises::ex2::test_textbook();*/
+	/*ch15::exercises::ex3::test();
+	ch15::exercises::ex3::test_textbook();*/
+	//ch15::exercises::ex4::test_textbook();
+	/*ch17::exercises::ex1::test();
+	ch17::exercises::ex1::test_textbook();
+	ch17::exercises::ex2::test();
+	ch17::exercises::ex2::test_textbook();
+	ch17::exercises::ex2::test_mix();*/
+	ch17::exercises::ex3::test();
 	
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

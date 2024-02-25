@@ -120,7 +120,7 @@ public:
 	}
 	void addNumber(const Person& person, string_view phonenum) {
 		if (!numberExist(person, phonenum)) {
-			m_phonebook.insert({ person, string(phonenum) });
+			m_phonebook.emplace( person, phonenum);
 		}
 	}
 	void removeNumber(const Person& person, string_view phonenum) {

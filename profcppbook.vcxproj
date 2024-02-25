@@ -151,6 +151,7 @@
     <ClCompile Include="ch14_exercise.ixx" />
     <ClCompile Include="ch15.ixx" />
     <ClCompile Include="ch17.ixx" />
+    <ClCompile Include="ch18.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />
@@ -167,6 +168,7 @@
       <BuildStlModules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildStlModules>
       <BuildStlModules Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildStlModules>
     </ClCompile>
+    <ClCompile Include="phone_book_ch18.ixx" />
     <ClCompile Include="Spreadsheet.ixx" />
     <ClCompile Include="spreadsheet_cell.cpp" />
     <ClCompile Include="spreadsheet_cell.ixx" />

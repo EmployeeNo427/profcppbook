@@ -177,5 +177,49 @@ export namespace ch17 {
 				myCopy(cbegin(lastNameResult), cend(lastNameResult), ostream_iterator<string> { cout, "\n" });
 			}
 		}
+		namespace ex4 {
+			using namespace std;
+			template <typename InputIter, typename OutputIter>
+			void myCopy(InputIter begin, InputIter end, OutputIter target)
+			{
+				for (auto iter{ begin }; iter != end; ++iter, ++target) { *target = *iter; }
+			}
+			void test() {
+				vector<int> results;
+				for (auto value : ranges::istream_view<int>(cin)
+					| ranges::views::take_while([](const auto& v) { return v != -1; })) {
+					results.push_back(value);
+				}
+				cout << "Terminating..." << endl;
+				myCopy(cbegin(results), cend(results), ostream_iterator<int> { cout, "\n" });
+			}
+			
+		}
+		namespace ex_bonus {
+			using namespace std;
+			template <typename InputIter, typename OutputIter>
+			void myCopy(InputIter begin, InputIter end, OutputIter target)
+			{
+				for (auto iter{ begin }; iter != end; ++iter, ++target) { *target = *iter; }
+			}
+			void test() {
+				vector<int> results;
+				cout << "Enter numbers separated by whitespace." << endl;
+				cout << "Press Ctrl+Z followed by Enter to stop." << endl;
+				istream_iterator<int> numbersIter{ cin };
+				istream_iterator<int> endIter;
+				cout << "Terminating..." << endl;
+				myCopy(numbersIter, endIter, back_inserter(results));
+				myCopy(cbegin(results), cend(results), ostream_iterator<int> { cout, "\n" });
+			}
+			void test_textbook2() {
+				vector<int> results;
+				ranges::copy(ranges::istream_view<int>(cin)
+					| ranges::views::take_while([](const auto& v) { return v != -1; }),
+					back_inserter(results));
+				myCopy(cbegin(results), cend(results), ostream_iterator<int> { cout, "\n" });
+			}
+
+		}
 	}
 }

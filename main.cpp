@@ -427,6 +427,9 @@ int main() {
 	//ch17::exercises::ex_bonus::test_textbook2();
 	ch18::exercises::ex1::test();
 	ch18::exercises::ex2::test();
+	ch18::exercises::ex3::test();
+	ch18::exercises::ex4::test();
+	ch18::exercises::ex_bonus::test();
 	//ch18::exercises::ex1::test_textbook();
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

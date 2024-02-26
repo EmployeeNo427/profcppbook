@@ -84,5 +84,86 @@ export namespace ch18 {
 				}
 			}
 		}
+		namespace ex3 {
+			using namespace std;
+			void test() {
+				map<string,int> myArray;
+				myArray["Key 1"] = 11;
+				myArray["Key 2"] = 22;
+				myArray["Key 3"] = 33;
+
+				try {
+					println("{}", myArray.at("Key 1"));
+					println("{}", myArray.at("Key 2"));
+
+					// Test const operator[]
+					const map<string,int>& c{ myArray };
+					println("{}", c.at("Key 3"));
+					println("{}", c.at("Key 4"));
+				}
+				catch (const exception& ex) {
+					println("Caught exception: {}", ex.what());
+				}
+			}
+		}
+		namespace ex4 {
+			using namespace std;
+			double average(span<double> sd) {
+				double sum{};
+				for (const auto& d : sd) {
+					sum += d;
+				}
+				return sum/sd.size();
+			}
+			void test() {
+				vector<double> vi{ 1,2,3,4,5,6 };
+				array<double, 4> ai{ 3.1,4.8,9.2,5.4 };
+				println("{}", average(vi));
+				println("{}", average(ai));
+
+				vector values1{ 1.1, 2.2, 3.3, 4.4 };
+				println("{}", average(values1));
+
+				array values2{ 1.1, 2.2, 3.3, 4.4 };
+				println("{}", average(values2));
+				println("{}", average({ values2.data() + 2, 2 }));
+				println("");
+
+			}
+		}
+		namespace ex_bonus {
+			using namespace std;
+			template <typename T>
+				requires is_arithmetic_v<T>
+			double average(span<const T> sd) {
+				double sum{};
+				for (const auto& d : sd) {
+					sum += d;
+				}
+				return sum / sd.size();
+			}
+			void test() {
+				vector<double> vi{ 1,2,3,4,5,6 };
+				array<double, 4> ai{ 3.1,4.8,9.2,5.4 };
+				vector<int> vi2{ 1,2,3,4,5,6 };
+				array<int, 4> ai2{ 3,4,9,5 };
+				array<long long, 4> ai3{ 3456456ll,4345345ll,9345345ll,5ll };
+				println("{}", average(span<const double>{vi.begin(), vi.end()}));
+				println("{}", average(span<const double>{ai.begin(), ai.end()}));
+				println("{}", average(span<const int>{vi2.begin(), vi2.end()}));
+				println("{}", average(span<const int>{ai2.begin(), ai2.end()}));
+				println("{}", average(span<const long long>{ai3.begin(), ai3.end()}));
+
+				vector values1{ 1.1, 2.2, 3.3, 4.4 };
+				//// The parameter of the function template is span<const T>.
+				//// This cannot be automatically deduced from the function arguments.
+				//// So, we need to specify the template type argument explicitly.
+				println("{}", average<double>(values1));
+
+				array values2{ 1, 2, 3, 4 };
+				println("{}", average<int>(values2));
+				println("{}", average<int>({ values2.data() + 2, 2 }));
+			}
+		}
 	}
 }

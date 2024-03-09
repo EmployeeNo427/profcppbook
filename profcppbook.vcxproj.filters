@@ -81,6 +81,9 @@
     <ClCompile Include="phone_book_ch18.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ch19.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />

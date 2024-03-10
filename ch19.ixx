@@ -54,5 +54,96 @@ export namespace ch19 {
 				findMatches(values1, values2, IsLargerThan, printMatch);
 			}
 		}
+		namespace ex2 {
+			using namespace std;
+			/*void func(int num, string_view str)
+			{
+				println("func({}, {})", num, str);
+			}*/
+			void test() {
+				// Bind second argument to a fixed value.
+				string myString{ "abc" };
+				auto f1{ bind([](int num, string_view str) {println("func({}, {})", num, str); }, placeholders::_1, myString) };
+				f1(16);
+
+				// Rearrange arguments
+				auto f2{ bind([](int num, string_view str) {println("func({}, {})", num, str); }, placeholders::_2, placeholders::_1) };
+				f2("Test", 32);
+			}
+			void test_textbook() {
+				// Bind second argument to a fixed value.
+				string myString{ "abc" };
+				auto f1{ [&myString](int num) { println("func({}, {})", num, myString); } };
+				f1(16);
+
+				// Rearrange arguments
+				auto f2{ [](string_view str,int num) {println("func({}, {})", num, str); }};
+				f2("Test", 32);
+			}
+		}
+		namespace ex3 {
+			using namespace std;
+			template<predicate<int, int> Matcher, invocable<size_t, int, int> MatchHandler>
+			void findMatches(span<const int> values1, span<const int> values2,
+				Matcher matcher, MatchHandler handler)
+			{
+				if (values1.size() != values2.size()) { return; } // Must be same size.
+
+				for (size_t i{ 0 }; i < values1.size(); ++i) {
+					if (matcher(values1[i], values2[i])) {
+						handler(i, values1[i], values2[i]);
+					}
+				}
+			}
+
+			bool intEqual(int value1, int value2)
+			{
+				return value1 == value2;
+			}
+
+			bool bothOdd(int value1, int value2)
+			{
+				return value1 % 2 == 1 && value2 % 2 == 1;
+			}
+
+			class Handler
+			{
+			public:
+				void handleMatch(size_t position, int value1, int value2)
+				{
+					println("Match found at position {} ({}, {})",
+						position, value1, value2);
+				}
+			};
+
+			void test() {
+				Handler handler;
+
+				vector values1{ 2, 5, 6, 9, 10, 1, 1 };
+				vector values2{ 4, 4, 2, 9, 0, 3, 1 };
+				println("Calling findMatches() using intEqual():");
+				findMatches(values1, values2, intEqual,
+					[&handler](size_t position, int value1, int value2) {handler.handleMatch(position, value1, value2); });
+
+				println("Calling findMatches() using bothOdd():");
+				findMatches(values1, values2, bothOdd,
+					[&handler](size_t position, int value1, int value2) {handler.handleMatch(position, value1, value2); });
+			}
+		}
+		namespace ex4 {
+			using namespace std;
+			void printRange(string_view message, auto& range)
+			{
+				cout << message;
+				for (const auto& value : range) { cout << value << " "; }
+				cout << endl;
+			}
+			void test() {
+				vector values{ 1, 2, 3, 2, 1, 2, 4, 5 };
+				printRange("Before erase: ", values);
+				erase_if(values, [](auto& value) {return value % 2 != 0; }); 
+				printRange("After erase: ", values);
+			}
+		}
 	}
 }

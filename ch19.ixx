@@ -145,5 +145,33 @@ export namespace ch19 {
 				printRange("After erase: ", values);
 			}
 		}
+		namespace ex5 {
+			using namespace std;
+			class Processor {
+			public:
+				Processor(auto callback) :cb{ callback } {}
+				int operator()(int i1) { return cb(i1); }
+			private:
+				function<int(int)> cb{};
+			};
+
+			int square(int value) { return value * value; }
+			int cube(int value) { return value * value * value; }
+
+			void test() {
+				Processor p1([](int i1) {return i1 * 2; });
+				Processor p2([](int i1) {return i1*i1*i1; });
+				cout<<p1(1)<<" "<<p2(3)<<endl;
+				{
+					Processor processor{ square };
+					println("{}", processor(2));
+				}
+
+				{
+					Processor processor{ cube };
+					println("{}", processor(2));
+				}
+			}
+		}
 	}
 }

@@ -173,5 +173,32 @@ export namespace ch19 {
 				}
 			}
 		}
+		namespace ex6 {
+			using namespace std;
+			
+			void test() {
+				auto power{ [](this auto& self, int n, int exponent) {
+					if (exponent == 0) { return static_cast<double>(1); }
+					if (exponent < 0) { return static_cast<double>(1 / (n * self(n, abs(exponent) - 1))); }
+					return static_cast<double>(n * self(n, exponent - 1));
+					}
+				};
+				println("Powers of two with exponents between -10 and 10");
+				for (int i{ -10 }; i < 11; ++i) { println("({},{})", i, power(2,i)); }
+			}
+			void test_textbook() {
+				auto power{ [](this auto& self, double value, int exponent) {
+					if (exponent == 0) { return 1.0; }
+					else if (exponent < 0) { return 1.0 / self(value, -exponent); }
+					else { return value * self(value, exponent - 1); }
+				} };
+
+				const double value{ 2.0 };
+				for (int exponent{ -10 }; exponent <= 10; ++exponent) {
+					println("{}^{} = {}", value, exponent, power(value, exponent));
+				}
+			}
+
+		}
 	}
 }

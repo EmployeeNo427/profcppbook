@@ -20,6 +20,7 @@ import ch15;
 import ch17;
 import ch18;
 import ch19;
+import ch20;
 import std;
 
 
@@ -433,14 +434,16 @@ int main() {
 	ch18::exercises::ex_bonus::test();*/
 	//ch18::exercises::ex1::test_textbook();
 
-	ch19::exercises::ex1::test();
+	/*ch19::exercises::ex1::test();
 	ch19::exercises::ex2::test();
 	ch19::exercises::ex2::test_textbook();
 	ch19::exercises::ex3::test();
 	ch19::exercises::ex4::test();
 	ch19::exercises::ex5::test();
 	ch19::exercises::ex6::test();
-	ch19::exercises::ex6::test_textbook();
+	ch19::exercises::ex6::test_textbook();*/
+
+	ch20::exercises::ex1::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

@@ -111,5 +111,59 @@ export namespace ch20 {
 
 
 		}
+		namespace ex3 {
+			using namespace std;
+			bool is_space(char q) noexcept
+			{
+				static constexpr auto ws = { ' ', '\t', '\n', '\v', '\r', '\f' };
+				return std::ranges::any_of(ws, [q](auto p) { return p == q; });
+			};
+			constexpr string trim(string_view sv) {
+				auto result{ sv | views::drop_while(is_space) | views::reverse | views::drop_while(is_space) | views::reverse };
+				return {begin(result),end(result)};
+			}
+			void test() {
+				{
+					string str1{ "      Left space content" };
+					cout << "original: (" << str1 << ")\n";
+					cout << "result: (" << trim(str1) << ")\n";
+				}
+				{
+					string str1{ "      Left space content Right Space          " };
+					cout << "original: (" << str1 << ")\n";
+					cout << "result: (" << trim(str1) << ")\n";
+				}
+				{
+					string str1{ "no space" };
+					cout << "original: (" << str1 << ")\n";
+					cout << "result: (" << trim(str1) << ")\n";
+				}
+				{
+					string str1{ "" };
+					cout << "original: (" << str1 << ")\n";
+					cout << "result: (" << trim(str1) << ")\n";
+				}
+				{
+					string str1{ " " };
+					cout << "original: (" << str1 << ")\n";
+					cout << "result: (" << trim(str1) << ")\n";
+				}
+			}
+			string textbook_trim(string_view sv) {
+				auto isNotWhiteSpace{ [](char c) {return !isspace(c); } };
+				auto firstNonWhiteSpace{ ranges::find_if(sv,isNotWhiteSpace) };
+				auto lastNonWhiteSpace{ ranges::find_last_if(sv,isNotWhiteSpace) };
+				return { firstNonWhiteSpace, lastNonWhiteSpace.begin() + 1};
+			}
+			void test_textbook() {
+				println("'{}'", textbook_trim("   Hello World!   "));
+				println("'{}'", textbook_trim("Hello World!   "));
+				println("'{}'", textbook_trim("   Hello World!"));
+				println("'{}'", textbook_trim("Hello World!"));
+				println("'{}'", textbook_trim(" \t Hello World! \n"));
+			}
+
+
+		}
 	}
 }

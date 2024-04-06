@@ -443,7 +443,9 @@ int main() {
 	ch19::exercises::ex6::test();
 	ch19::exercises::ex6::test_textbook();*/
 
-	ch20::exercises::ex1::test();
+	//ch20::exercises::ex1::test();
+	ch20::exercises::ex2::test();
+	//ch20::exercises::ex2::test_textbook();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

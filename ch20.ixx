@@ -190,5 +190,24 @@ export namespace ch20 {
 
 
 		}
+		namespace ex5 {
+			using namespace std;
+			string trim(string_view text)
+			{
+				auto isNonWhitespace{ [](char c) { return !isspace(c); } };
+				auto firstNonWhitespace{ find_if(begin(text), end(text), isNonWhitespace) };
+				auto lastNonWhitespace{ find_if(rbegin(text), rend(text), isNonWhitespace) };
+				return string{ firstNonWhitespace, lastNonWhitespace.base()};
+			}
+
+			void test()
+			{
+				println("'{}'", trim("   Hello World!   "));
+				println("'{}'", trim("Hello World!   "));
+				println("'{}'", trim("   Hello World!"));
+				println("'{}'", trim("Hello World!"));
+				println("'{}'", trim(" \t Hello World! \n"));
+			}
+		}
 	}
 }

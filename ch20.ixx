@@ -165,5 +165,30 @@ export namespace ch20 {
 
 
 		}
+		namespace ex4 {
+			using namespace std;
+			auto print_range = [](auto const& v, char term = ' ')
+				{
+					cout << "{ ";
+					for (const auto& e : v)
+						cout << e << ' ';
+					cout << '}' << term;
+				};
+			void test() {
+				auto nextNumber{ [counter = 0] () mutable { return ++counter; } };
+				vector<int> values(20);
+				ranges::generate(values, nextNumber);
+				print_range(values);
+
+				list<int> odds;
+				list<int> evens;
+				auto pairIters{ ranges::partition_copy(values,back_inserter(evens),front_inserter(odds),[](int i) {return i % 2 == 0; }) };
+				print_range(evens,'\n');
+				print_range(odds, '\n');
+
+			}
+
+
+		}
 	}
 }

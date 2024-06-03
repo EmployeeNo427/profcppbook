@@ -10,13 +10,11 @@ export namespace ch22 {
 				duration<long> d1{42};
 				duration<double,ratio<60>> d2{ 1.5 };
 
-				duration<long> d2_sec{ duration_cast<duration<long>>(d2) };
+				duration<double,ratio<60>> sum_min{ d1 + d2 };
+				auto sum_sec{ d1 + d2 };
 
-				duration<double,ratio<60>> sum_min{ d1 + d2_sec };
-				duration<long> sum_sec{ d1 + d2_sec };
-
-				println("{}({})+{}({}) = {}({})", d1, d1.count(), d2_sec, d2_sec.count(), sum_min, sum_min.count());
-				println("{}({})+{}({}) = {}({})", d1, d1.count(), d2_sec, d2_sec.count(), sum_sec, sum_sec.count());
+				println("{}({})+{}({}) = {}({})", d1, d1.count(), d2, d2.count(), sum_min, sum_min.count());
+				println("{}({})+{}({}) = {}({})", d1, d1.count(), d2, d2.count(), sum_sec, sum_sec.count());
 
 			}
 			void test_textbook(){

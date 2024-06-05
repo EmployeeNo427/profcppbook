@@ -73,5 +73,40 @@ export namespace ch22 {
 				}
 			}
 		}
+		namespace ex3 {
+			namespace myanswer {
+				using namespace std;
+				using namespace std::chrono;
+				days getNumberOfDaysBetweenDates(sys_days sd1, sys_days sd2) {
+					return floor<days>(sd2 - sd1);
+				}
+				void test() {
+					println("{}", getNumberOfDaysBetweenDates(floor<days>(system_clock::now()), sys_days{ 2024y / June / 2d }));
+					println("{}", getNumberOfDaysBetweenDates(sys_days{ 2024y / June / 2d }, floor<days>(system_clock::now())));
+					println("{}", getNumberOfDaysBetweenDates(sys_days{ 2024y / June / 2d }, sys_days{ 2023y / June / 2d }));
+				}
+			}
+			namespace textbook {
+				using namespace std;
+				using namespace std::chrono;
+				int getNumberOfDaysBetweenDates(const sys_days& date1, const sys_days& date2)
+				{
+					return (date2 - date1).count();
+				}
+				void test() {
+					// Set the global locale to the user's local (see Chapter 21).
+					locale::global(locale{ "" });
+
+					auto date1{ 2019y / June / 22d };
+					auto date2{ 2020y / June / 22d };
+					println("The number of days between {:L} and {:L} is {}.",
+						date1, date2, getNumberOfDaysBetweenDates(date1, date2));
+
+					println("{}", getNumberOfDaysBetweenDates(floor<days>(system_clock::now()), sys_days{ 2024y / June / 2d }));
+					println("{}", getNumberOfDaysBetweenDates(sys_days{ 2024y / June / 2d }, floor<days>(system_clock::now())));
+					println("{}", getNumberOfDaysBetweenDates(sys_days{ 2024y / June / 2d }, sys_days{ 2023y / June / 2d }));
+				}
+			}
+		}
 	}
 }

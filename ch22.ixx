@@ -176,5 +176,49 @@ export namespace ch22 {
 				}
 			}
 		}
+		namespace ex6 {
+			namespace myanswer {
+				using namespace std;
+				using namespace std::chrono;
+				seconds getDurationSinceMidnight() {
+					auto nowUTC{ system_clock::now() };
+					auto nowInCurrentZone{ current_zone()->to_local(nowUTC) };
+
+					auto now_sec{ floor<seconds>(nowInCurrentZone) };
+					auto now_day{ floor<seconds>(floor<days>(nowInCurrentZone)) };
+
+					return now_sec - now_day;
+				}
+				void test() {
+					locale::global(locale{ "" });
+					println("duration between midnight and "
+						"the current local time in seconds: {}", getDurationSinceMidnight());
+					println("duration between midnight and "
+						"the current local time in hh_mm_ss: {}", hh_mm_ss(getDurationSinceMidnight()));
+				}
+			}
+			namespace textbook {
+				using namespace std;
+				using namespace std::chrono;
+				seconds getDurationSinceMidnight()
+				{
+					// Get the current local time.
+					auto now{ current_zone()->to_local(system_clock::now()) };
+					// Truncate the current time to a precision of days.
+					auto today{ floor<days>(now) };
+					// Calculate the difference with a precision of seconds.
+					return duration_cast<seconds>(now - today);
+				}
+
+				void test()
+				{
+					auto numberOfSecondsSinceMidnight{ getDurationSinceMidnight() };
+					println("Seconds since midnight: {:L}", numberOfSecondsSinceMidnight);
+
+					hh_mm_ss hms{ numberOfSecondsSinceMidnight };
+					println("Converted: {}:{}:{}", hms.hours(), hms.minutes(), hms.seconds());
+				}
+			}
+		}
 	}
 }

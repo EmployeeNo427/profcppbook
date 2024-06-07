@@ -469,6 +469,8 @@ int main() {
 	ch22::exercises::ex5::myanswer::test();
 	ch22::exercises::ex5::textbook::test_1();
 	ch22::exercises::ex5::textbook::test_2();
+	ch22::exercises::ex6::myanswer::test();
+	ch22::exercises::ex6::textbook::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

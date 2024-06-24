@@ -474,6 +474,8 @@ int main() {
 	ch22::exercises::ex6::textbook::test();
 	
 	ch23::exercises::ex1::test();
+	ch23::exercises::ex2::test();
+	ch23::exercises::ex3::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

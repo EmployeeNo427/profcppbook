@@ -463,7 +463,7 @@ int main() {
 
 	ch22::exercises::ex2::test();*/
 	/*ch22::exercises::ex2::test_textbook();*/
-	ch22::exercises::ex3::myanswer::test();
+	/*ch22::exercises::ex3::myanswer::test();
 	ch22::exercises::ex3::textbook::test();
 
 	ch22::exercises::ex4::myanswer::test();
@@ -475,7 +475,12 @@ int main() {
 	
 	ch23::exercises::ex1::test();
 	ch23::exercises::ex2::test();
-	ch23::exercises::ex3::test();
+	ch23::exercises::ex3::test();*/
+
+	ch23::exercises::ex4::test_1();
+	ch23::exercises::ex4::test_2();
+	ch23::exercises::ex4::test_3();
+	ch23::exercises::ex4::test_4();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

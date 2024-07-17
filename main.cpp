@@ -483,7 +483,10 @@ int main() {
 	ch23::exercises::ex4::test_3();
 	ch23::exercises::ex4::test_4();*/
 	
-	ch24::exercises::ex1::test();
+	/*ch24::exercises::ex1::myanswer::test();
+	ch24::exercises::ex1::textbook::test();*/
+
+	ch24::exercises::ex2::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

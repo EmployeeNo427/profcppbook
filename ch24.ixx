@@ -112,33 +112,56 @@ export namespace ch24 {
 		}
 		namespace ex3 {
 			using namespace std;
+
 			pair<string, variant<bool, int, string>> parse_single_param(string param) {
-				regex reg{ "([^=]+)=([^=]+)$" };
-				if (smatch m; regex_match(param, m, reg)) {
+				regex reg{ R"(([^=]+)=([^=]+)$)" };
+				smatch m;
+				if (regex_match(param, m, reg)) {
 					string first{ m[1] };
-					if (m[2] == "true") {
-						return pair{ first,true };
+					string second{ m[2] };
+
+					if (second == "true") {
+						return make_pair(first, true);
 					}
-					else if (m[2] == "false") {
-						return pair{ first,false };
+					else if (second == "false") {
+						return make_pair(first, false);
 					}
-					else if (int second = stoi(m[2])) {
-						return pair{ first,second };
+					else {
+						try {
+							int int_value = stoi(second);
+							return make_pair(first, int_value);
+						}
+						catch (const invalid_argument&) {
+							// Not an integer, treat as string
+							return make_pair(first, second);
+						}
+						catch (const out_of_range&) {
+							// Not an integer, treat as string
+							return make_pair(first, second);
+						}
 					}
-					else { return pair{ first,static_cast<string>(m[2])}; }
+				}
+				else {
+					throw invalid_argument("Invalid parameter format");
 				}
 			}
+
 			void test(int argc, char** argv) {
-				for (int i{ 0 }; i < argc; ++i) {
-					auto result{ parse_single_param(argv[i]) };
-					if (holds_alternative<bool>(result.second)) {
-						println("First:{},Second is a bool:{}", result.first, get<bool>(result.second));
+				for (int i{ 1 }; i < argc; ++i) {  // Start from 1 to skip the program name
+					try {
+						auto result = parse_single_param(argv[i]);
+						if (holds_alternative<bool>(result.second)) {
+							cout << "First: " << result.first << ", Second is a bool: " << get<bool>(result.second) << endl;
+						}
+						else if (holds_alternative<int>(result.second)) {
+							cout << "First: " << result.first << ", Second is an int: " << get<int>(result.second) << endl;
+						}
+						else if (holds_alternative<string>(result.second)) {
+							cout << "First: " << result.first << ", Second is a string: " << get<string>(result.second) << endl;
+						}
 					}
-					else if (holds_alternative<int>(result.second)) {
-						println("First:{},Second is a int:{}", result.first, get<int>(result.second));
-					}
-					else if(holds_alternative<string>(result.second)){
-						println("First:{},Second is a string:{}", result.first, get<string>(result.second));
+					catch (const exception& e) {
+						cerr << "Error parsing parameter: " << argv[i] << " - " << e.what() << endl;
 					}
 				}
 			}

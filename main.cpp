@@ -407,308 +407,313 @@ void ex9_1_answer() {
 }
 
 
-int main() {
+//int main() {
+//
+//	
+//	//ch14_exercise::ex2::test();
+//	//ch14_exercise::ex3::test();
+//	//ch14_exercise::ex4::test();
+//	//ch15::examples::overload_subscript_original::test();
+//	//ch15::examples::overload_subscript::test();
+//	//ch15::exercises::ex1::test();
+//	//ch15::exercises::ex1::test_textbook();
+//	/*ch15::exercises::ex2::test();
+//	ch15::exercises::ex2::test_textbook();*/
+//	/*ch15::exercises::ex3::test();
+//	ch15::exercises::ex3::test_textbook();*/
+//	//ch15::exercises::ex4::test_textbook();
+//	/*ch17::exercises::ex1::test();
+//	ch17::exercises::ex1::test_textbook();
+//	ch17::exercises::ex2::test();
+//	ch17::exercises::ex2::test_textbook();
+//	ch17::exercises::ex2::test_mix();*/
+//	//ch17::exercises::ex3::test();
+//	//ch17::exercises::ex4::test();
+//	//ch17::exercises::ex_bonus::test();
+//	//ch17::exercises::ex_bonus::test_textbook2();
+//	/*ch18::exercises::ex1::test();
+//	ch18::exercises::ex2::test();
+//	ch18::exercises::ex3::test();
+//	ch18::exercises::ex4::test();
+//	ch18::exercises::ex_bonus::test();*/
+//	//ch18::exercises::ex1::test_textbook();
+//
+//	/*ch19::exercises::ex1::test();
+//	ch19::exercises::ex2::test();
+//	ch19::exercises::ex2::test_textbook();
+//	ch19::exercises::ex3::test();
+//	ch19::exercises::ex4::test();
+//	ch19::exercises::ex5::test();
+//	ch19::exercises::ex6::test();
+//	ch19::exercises::ex6::test_textbook();*/
+//
+//	//ch20::exercises::ex1::test();
+//	//ch20::exercises::ex2::test();
+//	//ch20::exercises::ex2::test_textbook();
+//	/*ch20::exercises::ex3::test();
+//	ch20::exercises::ex3::test_textbook();*/
+//	//ch20::exercises::ex4::test();
+//	//ch20::exercises::ex5::test();
+//	/*ch21::exercises::ex1::test();
+//	ch21::exercises::ex2::test();*/
+//	//ch21::exercises::ex3::test_answer();
+//	//ch21::exercises::ex4::test();
+//
+//	/*ch22::exercises::ex1::test();
+//	ch22::exercises::ex1::test_textbook();
+//
+//	ch22::exercises::ex2::test();*/
+//	/*ch22::exercises::ex2::test_textbook();*/
+//	/*ch22::exercises::ex3::myanswer::test();
+//	ch22::exercises::ex3::textbook::test();
+//
+//	ch22::exercises::ex4::myanswer::test();
+//	ch22::exercises::ex5::myanswer::test();
+//	ch22::exercises::ex5::textbook::test_1();
+//	ch22::exercises::ex5::textbook::test_2();
+//	ch22::exercises::ex6::myanswer::test();
+//	ch22::exercises::ex6::textbook::test();
+//	
+//	ch23::exercises::ex1::test();
+//	ch23::exercises::ex2::test();
+//	ch23::exercises::ex3::test();*/
+//
+//	/*ch23::exercises::ex4::test_1();
+//	ch23::exercises::ex4::test_2();
+//	ch23::exercises::ex4::test_3();
+//	ch23::exercises::ex4::test_4();*/
+//	
+//	/*ch24::exercises::ex1::myanswer::test();
+//	ch24::exercises::ex1::textbook::test();*/
+//
+//	ch24::exercises::ex2::test();
+//
+//	/*ch13_bookcode::code_1();
+//	ch13_bookcode::code_2();
+//	ch13_bookcode::code_3();*/
+//	//ch13_bookcode::getReservationData();
+//	//ch13_bookcode::calculateSumFromCin();
+//	//ch13_bookcode::code_4();
+//	//ch13_bookcode::code_5();
+//	//ch13_bookcode::exercises::ex1::test();
+//	//ch13_bookcode::exercises::ex2::test();
+//	//ch13_bookcode::exercises::ex3::test();
+//	//ch13_bookcode::exercises::ex3::answer_test();
+//	//ch13_bookcode::exercises::ex4::test();
+//	
+//	/*ex12_1::test();
+//	ex12_2::test();
+//	ex12_3::test();
+//	ex12_4::test();
+//	ex12_5::test();
+//	ex12_6::TestFind();*/
+//
+//	//array<int, 10> values{};
+//	//for (int index{ 0 }; index < values.size(); ++index) {
+//	//	values.at(index) = index;
+//	//}
+//	//values.back() = 99;
+//	//for (auto x:values) {
+//	//	cout << x << " ";
+//	//}
+//
+//	//auto myP3dSmartPtr{ make_unique<Point_3d>(1.34535,2.12334,3.41121224463456) };
+//	//print_point_3d(*myP3dSmartPtr);
+//
+//	//string str{ "Hello World!" };
+//	//cout << "Before: " << str << endl;
+//	//fillWithM(str);
+//	//cout << "After: " << str << endl;
+//
+//	//SpreadsheetCell myCell, anotherCell;
+//	//myCell.setValue(6);
+//	//anotherCell.setString("3.2");
+//	//cout << "cell 1: " << myCell.getValue() << endl;
+//	//cout << "cell 2: " << anotherCell.getValue() << endl;
+//
+//	//auto myCellp{ make_unique<SpreadsheetCell>() };
+//	//// Equivalent to:
+//	//// unique_ptr<SpreadsheetCell> myCellp { new SpreadsheetCell { } };
+//	//myCellp->setValue(3.7);
+//	//cout << "cell 1: " << myCellp->getValue() <<
+//	//	" " << myCellp->getString() << endl;
+//
+//	//SpreadsheetCell mycell(5), anothercell(4);
+//	//cout << "cell 1: " << mycell.getValue() << endl;
+//	//cout << "cell 2: " << anothercell.getValue() << endl;
+//
+//	//SpreadsheetCell aThirdCell{ "test" };  // Uses string-arg ctor
+//	//SpreadsheetCell aFourthCell{ 4.4 };    // Uses double-arg ctor
+//	//auto aFifthCellp{ make_unique<SpreadsheetCell>("5.5") }; // string-arg ctor
+//	//cout << "aThirdCell: " << aThirdCell.getValue() << endl;
+//	//cout << "aFourthCell: " << aFourthCell.getValue() << endl;
+//	//cout << "aFifthCellp: " << aFifthCellp->getValue() << endl;
+//
+//	//SpreadsheetCell myCell2;
+//	//myCell2.setValue(6);
+//	//cout << "cell 1: " << myCell2.getValue() << endl;
+//
+//	//EvenSequence p1{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
+//	//p1.dump();
+//
+//	//try {
+//	//	EvenSequence p2{ 1.0, 2.0, 3.0 };
+//	//}
+//	//catch (const invalid_argument& e) {
+//	//	cout << e.what() << endl;
+//	//}
+//
+//	//ex8_1();
+//	//ex8_2();
+//	//ex8_3();
+//	//ex8_4();
+//	//ex8_4_answer();
+//
+//	//SpreadsheetApplication app;
+//	//Spreadsheet s1{ 2, 3, app };
+//	//Spreadsheet s2{ 3, 4, app };
+//
+//	//SpreadsheetCell myCell3{ 5 };
+//	//myCell3.setColor(SpreadsheetCell::Color::Blue);
+//	//auto color{ myCell3.getColor() };
+//
+//
+//	//ex9_1();
+//	//ex9_1_answer();
+//
+//
+//
+//
+//	//ex2_1();
+//	
+//	/*string heystack, find, replacement;
+//	cout << "Enter heystack: " << endl;
+//	getline(cin, heystack);
+//
+//	cout << "Enter find: " << endl;
+//	getline(cin, find);
+//
+//	cout << "Enter replacement: " << endl;
+//	getline(cin, replacement);
+//	string result{ ex2_2(heystack, find, replacement) };
+//	cout << heystack << endl;
+//	cout << find << endl;
+//	cout << replacement << endl;
+//	cout << result << endl;*/
+//
+//	/*ex2_4();*/
+//
+//
+//	//test_uninitialized_variable();
+//	//test_limit();
+//	//test_conversion();
+//	//brilliant_calculation();
+//	// Create and populate an employee.
+//	//Employee anEmployee;
+//	//anEmployee.firstInitial = 'J';
+//	//anEmployee.lastInitial = 'D';
+//	//anEmployee.employeeNumber = 42;
+//	//anEmployee.salary = 80000;
+//	//// Output the values of an employee.
+//	//cout << format("Employee: {}{}", anEmployee.firstInitial,
+//	//	anEmployee.lastInitial) << endl;
+//	//cout << format("Number: {}", anEmployee.employeeNumber) << endl;
+//	//cout << format("Salary: ${}", anEmployee.salary) << endl;
+//
+//	//test_switch();
+//	//int someInt{ 3 };
+//	//char someChar{ 's' };
+//	//myFunction(8, 'a');
+//	//myFunction(someInt, 'b');
+//	//myFunction(5, someChar);
+//
+//	//int sum{ addNumbers_1(5, 3) };
+//	//cout << sum<<'\n';
+//	//
+//	//cout << addNumbers_2(1, 2) << endl; // Calls the integer version
+//	//cout << addNumbers_2(1.11, 2.22);   // Calls the double version
+//
+//	//func();
+//
+//	//optional<int> data1{ getData(true) };
+//	//optional<int> data2{ getData(false) };
+//	//cout << "data1.has_value = " << data1.has_value() << endl;
+//	//if (data2) {
+//	//	cout << "data2 has a value." << endl;
+//	//}
+//	//cout << "data1.value = " << data1.value() << endl;
+//	//cout << "data1.value = " << *data1 << endl;
+//	//cout << "data2.value = " << data2.value_or(0) << endl;
+//
+//	//AirlineTicket myTicket;
+//	//myTicket.setPassengerName("Sherman T. Socketwrench");
+//	//myTicket.setNumberOfMiles(700);
+//	//double cost{ myTicket.calculatePriceInDollars() };
+//	//cout << format("This ticket will cost ${}", cost) << endl;
+//	//////myTicket.setFrequentFlyerNumber(32);
+//	////double cost{ myTicket.calculatePriceInDollars() };
+//	////cost = 3.1415926;
+//	////const auto& name{ myTicket.getPassengerName() };
+//	////const auto frequent_flyer_num{ myTicket.getFrequentFlyerNumber() };
+//	////std::cout << std::format("This ticket will cost ${}", cost) << std::endl;
+//
+//	////std::cout << std::format("{} has {} frequent flyer number.", name, frequent_flyer_num.value_or(0));
+//	//string str{ "C++" };
+//	//const string& constStr{ as_const(str) };
+//	//str= "Rust";
+//	//cout << str << "\n";
+//	//cout << constStr<<"\n";
+//
+//	//cout << "Testing the Employee class." << endl;
+//	//Employee emp{ "Jane", "Doe" };
+//	//emp.setFirstName("John");
+//	//emp.setLastName("Doe");
+//	//emp.setEmployeeNumber(71);
+//	//emp.setSalary(50'000);
+//	//emp.promote();
+//	//emp.promote(50);
+//	//emp.hire();
+//	//emp.display();
+//
+//	//try {
+//	//	cout << divideNumbers(2.5, 0.5) << endl;
+//	//	cout << divideNumbers(2.3, 0) << endl;
+//	//	cout << divideNumbers(4.5, 2.5) << endl;
+//	//}
+//	//catch (const invalid_argument& exception) {
+//	//	cout << format("Exception caught: {}", exception.what()) << endl;
+//	//}
+//
+//	////test_interface();
+//
+//	//test_airlineticket();
+//
+//	//double value1{ 0.314 };
+//	//const size_t BufferSize{ 50 };
+//	//string out(BufferSize, ' '); // A string of BufferSize space characters.
+//	//auto [ptr1, error1] { to_chars(out.data(), out.data() + out.size(), value1) };
+//	//if (error1 == errc{}) { cout << out << endl; /* Conversion successful. */ }
+//	//double value2;
+//	//auto [ptr2, error2] { from_chars(out.data(), out.data() + out.size(), value2) };
+//	//if (error2 == errc{}) {
+//	//	if (value1 == value2) {
+//	//		cout << "Perfect roundtrip" << endl;
+//	//	}
+//	//	else {
+//	//		cout << "No perfect roundtrip?!?" << endl;
+//	//	}
+//	//}
+//
+//	//test_format_specifier();
+//	//test_format_specifier_zeros();
+//
+//	//return 0;
+//	
+//}
 
-	
-	//ch14_exercise::ex2::test();
-	//ch14_exercise::ex3::test();
-	//ch14_exercise::ex4::test();
-	//ch15::examples::overload_subscript_original::test();
-	//ch15::examples::overload_subscript::test();
-	//ch15::exercises::ex1::test();
-	//ch15::exercises::ex1::test_textbook();
-	/*ch15::exercises::ex2::test();
-	ch15::exercises::ex2::test_textbook();*/
-	/*ch15::exercises::ex3::test();
-	ch15::exercises::ex3::test_textbook();*/
-	//ch15::exercises::ex4::test_textbook();
-	/*ch17::exercises::ex1::test();
-	ch17::exercises::ex1::test_textbook();
-	ch17::exercises::ex2::test();
-	ch17::exercises::ex2::test_textbook();
-	ch17::exercises::ex2::test_mix();*/
-	//ch17::exercises::ex3::test();
-	//ch17::exercises::ex4::test();
-	//ch17::exercises::ex_bonus::test();
-	//ch17::exercises::ex_bonus::test_textbook2();
-	/*ch18::exercises::ex1::test();
-	ch18::exercises::ex2::test();
-	ch18::exercises::ex3::test();
-	ch18::exercises::ex4::test();
-	ch18::exercises::ex_bonus::test();*/
-	//ch18::exercises::ex1::test_textbook();
-
-	/*ch19::exercises::ex1::test();
-	ch19::exercises::ex2::test();
-	ch19::exercises::ex2::test_textbook();
-	ch19::exercises::ex3::test();
-	ch19::exercises::ex4::test();
-	ch19::exercises::ex5::test();
-	ch19::exercises::ex6::test();
-	ch19::exercises::ex6::test_textbook();*/
-
-	//ch20::exercises::ex1::test();
-	//ch20::exercises::ex2::test();
-	//ch20::exercises::ex2::test_textbook();
-	/*ch20::exercises::ex3::test();
-	ch20::exercises::ex3::test_textbook();*/
-	//ch20::exercises::ex4::test();
-	//ch20::exercises::ex5::test();
-	/*ch21::exercises::ex1::test();
-	ch21::exercises::ex2::test();*/
-	//ch21::exercises::ex3::test_answer();
-	//ch21::exercises::ex4::test();
-
-	/*ch22::exercises::ex1::test();
-	ch22::exercises::ex1::test_textbook();
-
-	ch22::exercises::ex2::test();*/
-	/*ch22::exercises::ex2::test_textbook();*/
-	/*ch22::exercises::ex3::myanswer::test();
-	ch22::exercises::ex3::textbook::test();
-
-	ch22::exercises::ex4::myanswer::test();
-	ch22::exercises::ex5::myanswer::test();
-	ch22::exercises::ex5::textbook::test_1();
-	ch22::exercises::ex5::textbook::test_2();
-	ch22::exercises::ex6::myanswer::test();
-	ch22::exercises::ex6::textbook::test();
-	
-	ch23::exercises::ex1::test();
-	ch23::exercises::ex2::test();
-	ch23::exercises::ex3::test();*/
-
-	/*ch23::exercises::ex4::test_1();
-	ch23::exercises::ex4::test_2();
-	ch23::exercises::ex4::test_3();
-	ch23::exercises::ex4::test_4();*/
-	
-	/*ch24::exercises::ex1::myanswer::test();
-	ch24::exercises::ex1::textbook::test();*/
-
-	ch24::exercises::ex2::test();
-
-	/*ch13_bookcode::code_1();
-	ch13_bookcode::code_2();
-	ch13_bookcode::code_3();*/
-	//ch13_bookcode::getReservationData();
-	//ch13_bookcode::calculateSumFromCin();
-	//ch13_bookcode::code_4();
-	//ch13_bookcode::code_5();
-	//ch13_bookcode::exercises::ex1::test();
-	//ch13_bookcode::exercises::ex2::test();
-	//ch13_bookcode::exercises::ex3::test();
-	//ch13_bookcode::exercises::ex3::answer_test();
-	//ch13_bookcode::exercises::ex4::test();
-	
-	/*ex12_1::test();
-	ex12_2::test();
-	ex12_3::test();
-	ex12_4::test();
-	ex12_5::test();
-	ex12_6::TestFind();*/
-
-	//array<int, 10> values{};
-	//for (int index{ 0 }; index < values.size(); ++index) {
-	//	values.at(index) = index;
-	//}
-	//values.back() = 99;
-	//for (auto x:values) {
-	//	cout << x << " ";
-	//}
-
-	//auto myP3dSmartPtr{ make_unique<Point_3d>(1.34535,2.12334,3.41121224463456) };
-	//print_point_3d(*myP3dSmartPtr);
-
-	//string str{ "Hello World!" };
-	//cout << "Before: " << str << endl;
-	//fillWithM(str);
-	//cout << "After: " << str << endl;
-
-	//SpreadsheetCell myCell, anotherCell;
-	//myCell.setValue(6);
-	//anotherCell.setString("3.2");
-	//cout << "cell 1: " << myCell.getValue() << endl;
-	//cout << "cell 2: " << anotherCell.getValue() << endl;
-
-	//auto myCellp{ make_unique<SpreadsheetCell>() };
-	//// Equivalent to:
-	//// unique_ptr<SpreadsheetCell> myCellp { new SpreadsheetCell { } };
-	//myCellp->setValue(3.7);
-	//cout << "cell 1: " << myCellp->getValue() <<
-	//	" " << myCellp->getString() << endl;
-
-	//SpreadsheetCell mycell(5), anothercell(4);
-	//cout << "cell 1: " << mycell.getValue() << endl;
-	//cout << "cell 2: " << anothercell.getValue() << endl;
-
-	//SpreadsheetCell aThirdCell{ "test" };  // Uses string-arg ctor
-	//SpreadsheetCell aFourthCell{ 4.4 };    // Uses double-arg ctor
-	//auto aFifthCellp{ make_unique<SpreadsheetCell>("5.5") }; // string-arg ctor
-	//cout << "aThirdCell: " << aThirdCell.getValue() << endl;
-	//cout << "aFourthCell: " << aFourthCell.getValue() << endl;
-	//cout << "aFifthCellp: " << aFifthCellp->getValue() << endl;
-
-	//SpreadsheetCell myCell2;
-	//myCell2.setValue(6);
-	//cout << "cell 1: " << myCell2.getValue() << endl;
-
-	//EvenSequence p1{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
-	//p1.dump();
-
-	//try {
-	//	EvenSequence p2{ 1.0, 2.0, 3.0 };
-	//}
-	//catch (const invalid_argument& e) {
-	//	cout << e.what() << endl;
-	//}
-
-	//ex8_1();
-	//ex8_2();
-	//ex8_3();
-	//ex8_4();
-	//ex8_4_answer();
-
-	//SpreadsheetApplication app;
-	//Spreadsheet s1{ 2, 3, app };
-	//Spreadsheet s2{ 3, 4, app };
-
-	//SpreadsheetCell myCell3{ 5 };
-	//myCell3.setColor(SpreadsheetCell::Color::Blue);
-	//auto color{ myCell3.getColor() };
-
-
-	//ex9_1();
-	//ex9_1_answer();
-
-
-
-
-	//ex2_1();
-	
-	/*string heystack, find, replacement;
-	cout << "Enter heystack: " << endl;
-	getline(cin, heystack);
-
-	cout << "Enter find: " << endl;
-	getline(cin, find);
-
-	cout << "Enter replacement: " << endl;
-	getline(cin, replacement);
-	string result{ ex2_2(heystack, find, replacement) };
-	cout << heystack << endl;
-	cout << find << endl;
-	cout << replacement << endl;
-	cout << result << endl;*/
-
-	/*ex2_4();*/
-
-
-	//test_uninitialized_variable();
-	//test_limit();
-	//test_conversion();
-	//brilliant_calculation();
-	// Create and populate an employee.
-	//Employee anEmployee;
-	//anEmployee.firstInitial = 'J';
-	//anEmployee.lastInitial = 'D';
-	//anEmployee.employeeNumber = 42;
-	//anEmployee.salary = 80000;
-	//// Output the values of an employee.
-	//cout << format("Employee: {}{}", anEmployee.firstInitial,
-	//	anEmployee.lastInitial) << endl;
-	//cout << format("Number: {}", anEmployee.employeeNumber) << endl;
-	//cout << format("Salary: ${}", anEmployee.salary) << endl;
-
-	//test_switch();
-	//int someInt{ 3 };
-	//char someChar{ 's' };
-	//myFunction(8, 'a');
-	//myFunction(someInt, 'b');
-	//myFunction(5, someChar);
-
-	//int sum{ addNumbers_1(5, 3) };
-	//cout << sum<<'\n';
-	//
-	//cout << addNumbers_2(1, 2) << endl; // Calls the integer version
-	//cout << addNumbers_2(1.11, 2.22);   // Calls the double version
-
-	//func();
-
-	//optional<int> data1{ getData(true) };
-	//optional<int> data2{ getData(false) };
-	//cout << "data1.has_value = " << data1.has_value() << endl;
-	//if (data2) {
-	//	cout << "data2 has a value." << endl;
-	//}
-	//cout << "data1.value = " << data1.value() << endl;
-	//cout << "data1.value = " << *data1 << endl;
-	//cout << "data2.value = " << data2.value_or(0) << endl;
-
-	//AirlineTicket myTicket;
-	//myTicket.setPassengerName("Sherman T. Socketwrench");
-	//myTicket.setNumberOfMiles(700);
-	//double cost{ myTicket.calculatePriceInDollars() };
-	//cout << format("This ticket will cost ${}", cost) << endl;
-	//////myTicket.setFrequentFlyerNumber(32);
-	////double cost{ myTicket.calculatePriceInDollars() };
-	////cost = 3.1415926;
-	////const auto& name{ myTicket.getPassengerName() };
-	////const auto frequent_flyer_num{ myTicket.getFrequentFlyerNumber() };
-	////std::cout << std::format("This ticket will cost ${}", cost) << std::endl;
-
-	////std::cout << std::format("{} has {} frequent flyer number.", name, frequent_flyer_num.value_or(0));
-	//string str{ "C++" };
-	//const string& constStr{ as_const(str) };
-	//str= "Rust";
-	//cout << str << "\n";
-	//cout << constStr<<"\n";
-
-	//cout << "Testing the Employee class." << endl;
-	//Employee emp{ "Jane", "Doe" };
-	//emp.setFirstName("John");
-	//emp.setLastName("Doe");
-	//emp.setEmployeeNumber(71);
-	//emp.setSalary(50'000);
-	//emp.promote();
-	//emp.promote(50);
-	//emp.hire();
-	//emp.display();
-
-	//try {
-	//	cout << divideNumbers(2.5, 0.5) << endl;
-	//	cout << divideNumbers(2.3, 0) << endl;
-	//	cout << divideNumbers(4.5, 2.5) << endl;
-	//}
-	//catch (const invalid_argument& exception) {
-	//	cout << format("Exception caught: {}", exception.what()) << endl;
-	//}
-
-	////test_interface();
-
-	//test_airlineticket();
-
-	//double value1{ 0.314 };
-	//const size_t BufferSize{ 50 };
-	//string out(BufferSize, ' '); // A string of BufferSize space characters.
-	//auto [ptr1, error1] { to_chars(out.data(), out.data() + out.size(), value1) };
-	//if (error1 == errc{}) { cout << out << endl; /* Conversion successful. */ }
-	//double value2;
-	//auto [ptr2, error2] { from_chars(out.data(), out.data() + out.size(), value2) };
-	//if (error2 == errc{}) {
-	//	if (value1 == value2) {
-	//		cout << "Perfect roundtrip" << endl;
-	//	}
-	//	else {
-	//		cout << "No perfect roundtrip?!?" << endl;
-	//	}
-	//}
-
-	//test_format_specifier();
-	//test_format_specifier_zeros();
-
-	//return 0;
-	
+//For Exercise 24-3
+int main(int argc, char** argv) {
+	ch24::exercises::ex3::test(argc,argv);
 }
 
 

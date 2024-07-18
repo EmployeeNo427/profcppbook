@@ -110,5 +110,38 @@ export namespace ch24 {
 			}
 
 		}
+		namespace ex3 {
+			using namespace std;
+			pair<string, variant<bool, int, string>> parse_single_param(string param) {
+				regex reg{ "([^=]+)=([^=]+)$" };
+				if (smatch m; regex_match(param, m, reg)) {
+					string first{ m[1] };
+					if (m[2] == "true") {
+						return pair{ first,true };
+					}
+					else if (m[2] == "false") {
+						return pair{ first,false };
+					}
+					else if (int second = stoi(m[2])) {
+						return pair{ first,second };
+					}
+					else { return pair{ first,static_cast<string>(m[2])}; }
+				}
+			}
+			void test(int argc, char** argv) {
+				for (int i{ 0 }; i < argc; ++i) {
+					auto result{ parse_single_param(argv[i]) };
+					if (holds_alternative<bool>(result.second)) {
+						println("First:{},Second is a bool:{}", result.first, get<bool>(result.second));
+					}
+					else if (holds_alternative<int>(result.second)) {
+						println("First:{},Second is a int:{}", result.first, get<int>(result.second));
+					}
+					else if(holds_alternative<string>(result.second)){
+						println("First:{},Second is a string:{}", result.first, get<string>(result.second));
+					}
+				}
+			}
+		}
 	}
 }

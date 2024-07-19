@@ -713,7 +713,9 @@ void ex9_1_answer() {
 
 //For Exercise 24-3
 int main(int argc, char** argv) {
-	ch24::exercises::ex3::test(argc,argv);
+	ch24::exercises::ex3::test(argc, argv);
+	ch24::exercises::ex4::test(argc, argv);
+	ch24::exercises::ex5::test(argc, argv);
 }
 
 

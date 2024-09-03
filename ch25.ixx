@@ -8,7 +8,7 @@ export namespace ch25 {
 				using namespace std;
 
 				template <forward_iterator ForwardIterator,
-					output_iterator<iter_value_t<ForwardIterator>> OutputIterator,
+					output_iterator<iter_reference_t<ForwardIterator>> OutputIterator,
 					indirect_unary_predicate<ForwardIterator> Predicate,
 					invocable<iter_reference_t<ForwardIterator>> Transform>
 				OutputIterator tranform_if(ForwardIterator first, ForwardIterator last,

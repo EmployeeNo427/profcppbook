@@ -8,9 +8,9 @@ export namespace ch25 {
 				using namespace std;
 
 				template <forward_iterator ForwardIterator,
-					output_iterator<typename iterator_traits<ForwardIterator>::value_type> OutputIterator,
-					predicate<typename iterator_traits<ForwardIterator>::reference> Predicate,
-					invocable<typename iterator_traits<ForwardIterator>::reference> Transform>
+					output_iterator<iter_value_t<ForwardIterator>> OutputIterator,
+					predicate<iter_reference_t<ForwardIterator>> Predicate,
+					invocable<iter_reference_t<ForwardIterator>> Transform>
 				OutputIterator tranform_if(ForwardIterator first, ForwardIterator last,
 					OutputIterator dest, Predicate pred, Transform func) {
 					while (first != last) {

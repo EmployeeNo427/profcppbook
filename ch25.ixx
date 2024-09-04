@@ -51,8 +51,9 @@ export namespace ch25 {
 					int val{ 1 };
 					generate(std::ranges::begin(range), std::ranges::end(range), 
 						[&prev, &val] {
+							auto temp{ val };
 							val = prev + val; 
-							prev = val - prev;
+							prev = temp;
 							return val;
 						});
 				}

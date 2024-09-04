@@ -490,6 +490,7 @@ int main() {
 	/*ch24::exercises::ex2::test();*/
 
 	ch25::exercises::ex1::myanswer::test();
+	ch25::exercises::ex2::myanswer::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

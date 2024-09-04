@@ -35,6 +35,33 @@ export namespace ch25 {
 					auto multiply_two{ [](int i) { return i * 2; } };
 					tranform_if(cbegin(arr), cend(arr), back_inserter(result), odd, multiply_two);
 					for (int i : result) { print("{} ", i); }
+					println("");
+				}
+			}
+		}
+		namespace ex2 {
+			namespace myanswer {
+				using namespace std;
+
+
+				template <ranges::input_range Range>
+				void generate_fibonacci(Range&& range)
+				{
+					int prev{ -1 };
+					int val{ 1 };
+					generate(std::ranges::begin(range), std::ranges::end(range), 
+						[&prev, &val] {
+							val = prev + val; 
+							prev = val - prev;
+							return val;
+						});
+				}
+
+				void test() {
+					vector<int> vi(12);
+					generate_fibonacci(vi);
+					println("fibonacci");
+					for (const auto& i : vi) { print("{} ", i); }
 				}
 			}
 		}

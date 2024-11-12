@@ -117,6 +117,9 @@
     <ClCompile Include="ch25_directed_graph_infra\graph_node.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ch26.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />

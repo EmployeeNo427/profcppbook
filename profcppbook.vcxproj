@@ -164,6 +164,7 @@
     <ClCompile Include="ch25_directed_graph_infra\directed_graph.ixx" />
     <ClCompile Include="ch25_directed_graph_infra\directed_graph_to_dot.ixx" />
     <ClCompile Include="ch25_directed_graph_infra\graph_node.ixx" />
+    <ClCompile Include="ch26.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />

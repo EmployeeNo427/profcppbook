@@ -80,5 +80,45 @@ export namespace ch26 {
 				};
 			}
 		}
+		namespace ex2 {
+			namespace myanswer {
+				using namespace std;
+
+				template <unsigned int f>
+				class Fibonacci
+				{
+				public:
+					static constexpr unsigned long long value{ Fibonacci<f - 2>::value + Fibonacci<f - 1>::value };
+				};
+
+				template <>
+				class Fibonacci<0>
+				{
+				public:
+					static constexpr unsigned long long value{ 0 };
+				};
+
+				template <>
+				class Fibonacci<1>
+				{
+				public:
+					static constexpr unsigned long long value{ 1 };
+				};
+
+				template <unsigned int f>
+				inline constexpr unsigned long long Fibonacci_v = Fibonacci<f>::value;
+
+				void test()
+				{
+					println("{}", Fibonacci_v<6>);
+					println("{}", Fibonacci_v<7>);
+					println("{}", Fibonacci_v<8>);
+					println("{}", Fibonacci_v<9>);
+					println("{}", Fibonacci_v<10>);
+					println("{}", Fibonacci_v<11>);
+					println("{}", Fibonacci_v<12>);
+				}
+			}
+		}
 	}
 }

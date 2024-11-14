@@ -120,5 +120,44 @@ export namespace ch26 {
 				}
 			}
 		}
+		namespace ex3 {
+			namespace myanswer {
+				using namespace std;
+
+				consteval unsigned long long fibonacci(int n) {
+
+					if (n == 0) { return 0; }
+					else if (n == 1) { return 1; }
+					else {
+						unsigned long long minus_two{ 0 };
+						unsigned long long minus_one{ 1 };
+						unsigned long long result{};
+
+						for (unsigned long long ull{ 1 }; ull < n; ++ull) {
+							result = minus_two + minus_one;
+							swap(minus_two, minus_one);
+							minus_one = result;
+						}
+						return result;
+					}				
+				}
+
+				void test(){
+					println("{}", fibonacci(0));
+					println("{}", fibonacci(1));
+					println("{}", fibonacci(2));
+					println("{}", fibonacci(3));
+					println("{}", fibonacci(4));
+					println("{}", fibonacci(5));
+					println("{}", fibonacci(6));
+					println("{}", fibonacci(7));
+					println("{}", fibonacci(8));
+					println("{}", fibonacci(9));
+					println("{}", fibonacci(10));
+					println("{}", fibonacci(11));
+					println("{}", fibonacci(12));
+				}
+			}
+		}
 	}
 }

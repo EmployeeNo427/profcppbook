@@ -124,22 +124,18 @@ export namespace ch26 {
 			namespace myanswer {
 				using namespace std;
 
-				consteval unsigned long long fibonacci(int n) {
+				consteval unsigned long long fibonacci(unsigned int n) {
+					unsigned long long a{ 0 };
+					unsigned long long b{ 1 };
 
-					if (n == 0) { return 0; }
-					else if (n == 1) { return 1; }
-					else {
-						unsigned long long minus_two{ 0 };
-						unsigned long long minus_one{ 1 };
-						unsigned long long result{};
+					unsigned long long temp{0};
 
-						for (unsigned long long ull{ 1 }; ull < n; ++ull) {
-							result = minus_two + minus_one;
-							swap(minus_two, minus_one);
-							minus_one = result;
-						}
-						return result;
-					}				
+					for (unsigned long long ull{ 0 }; ull < n;++ull) {
+						temp = a + b;
+						swap(a, b);
+						b = temp;
+					}
+					return a;
 				}
 
 				void test(){

@@ -133,7 +133,7 @@ export namespace ch26 {
 					for (unsigned long long ull{ 0 }; ull < n;++ull) {
 						temp = a + b;
 						swap(a, b);
-						b = temp;
+						swap(b,temp);
 					}
 					return a;
 				}

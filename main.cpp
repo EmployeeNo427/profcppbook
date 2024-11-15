@@ -496,7 +496,10 @@ int main() {
 
 	//ch26::exercises::ex1::myanswer::test(); 
 	//ch26::exercises::ex2::myanswer::test();
-	ch26::exercises::ex3::myanswer::test();
+	//ch26::exercises::ex3::myanswer::test();
+	ch26::exercises::ex4::myanswer::test();
+	ch26::exercises::ex5::myanswer::test();
+	ch26::exercises::ex6::myanswer::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

@@ -155,5 +155,121 @@ export namespace ch26 {
 				}
 			}
 		}
+		namespace ex4 {
+			namespace myanswer {
+				using namespace std;
+
+				template<typename T, typename... Us>
+				concept SameTypes = (same_as<T, Us> && ...);
+
+				template<typename T, typename... Tn>
+					requires SameTypes<T, Tn...>
+				void push_back_values(vector<T>& vt, const Tn&... args) {
+					(vt.push_back(args), ...);
+				}
+
+				template<typename T, typename... Tn>
+					requires SameTypes<T, Tn...>
+				void insert_values(vector<T>& vt, const Tn&... args) {
+					(vt.insert(end(vt), args), ...);
+				}
+
+				void test() {
+					vector<int> vi;
+					vector<string> vs;
+					vector<double> vd;
+
+					push_back_values(vi, 1, 5, 6, 6, 7, 3);
+					insert_values(vi, 1, 5, 6, 6, 7, 3);
+					push_back_values(vs, "asdasd"s, "asdcv"s, "cvbbcv"s, "vxcvxcv"s, "Hello vbbi"s, "kop"s);
+					insert_values(vs, "asdasd"s, "asdcv"s, "cvbbcv"s, "vxcvxcv"s, "Hello vbbi"s, "kop"s);
+					push_back_values(vd, 4.5, 6.872, 3.14159, 75.0);
+					insert_values(vd, 4.5, 6.872, 3.14159, 75.0);
+
+					for (auto& i : vi) {
+						print("{} ", i);
+					}
+					println("");
+					for (auto& s : vs) {
+						print("{} ", s);
+					}
+					println("");
+					for (auto& d : vd) {
+						print("{} ", d);
+					}
+					println("");
+
+				}
+			}
+		}
+		namespace ex5 {
+			namespace myanswer {
+				using namespace std;
+
+				template<typename T1, typename T2>
+				decltype(auto) multiply(T1 t1, T2 t2) {
+					if constexpr (is_arithmetic_v<T1> && is_arithmetic_v<T2>) {
+						return t1 * t2;
+					}
+					else {
+						throw invalid_argument{
+							"Either " + string{typeid(T1).name()} + " or " + string{typeid(T2).name()} + " is not arithmetic value."
+						};
+					}
+				}
+
+				void test() {
+					try {
+						println("ex5:");
+						println("{}", multiply(1, 2));
+						println("{}", multiply(4.23, 6.789));
+						println("{}", multiply(2, 3));
+						println("{}", multiply(4.12, 2));
+						println("{}", multiply(0, 9.815));
+						println("{}", multiply(-1, 67.12));
+						
+						//Testing thowring exception
+						//multiply("what", 67.12);
+						//multiply(3, "boo!");
+						//multiply("good", "job!");
+					}
+					catch (const exception& e) {
+						cerr << e.what() << endl;
+					}
+				}
+
+				
+			}
+		}
+		namespace ex6 {
+			namespace myanswer {
+				using namespace std;
+
+				template <typename T>
+				concept Arithmeticable = is_arithmetic_v<T>;
+
+				decltype(auto) multiply(const Arithmeticable auto& t1, const Arithmeticable auto& t2)
+				{
+					return t1 * t2;
+				}
+
+				void test() {
+					println("ex6:");
+					println("{}", multiply(1, 2));
+					println("{}", multiply(4.23, 6.789));
+					println("{}", multiply(2, 3));
+					println("{}", multiply(4.12, 2));
+					println("{}", multiply(0, 9.815));
+					println("{}", multiply(-1, 67.12));
+
+					//Testing concepts validation
+					/*multiply("what", 67.12);
+					multiply(3, "boo!");
+					multiply("good", "job!");*/
+				}
+
+
+			}
+		}
 	}
 }

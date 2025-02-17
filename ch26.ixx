@@ -186,7 +186,7 @@ export namespace ch26 {
 					push_back_values(vd, 4.5, 6.872, 3.14159, 75.0);
 					insert_values(vd, 4.5, 6.872, 3.14159, 75.0);
 
-					for (auto& i : vi) {
+					/*for (auto& i : vi) {
 						print("{} ", i);
 					}
 					println("");
@@ -197,7 +197,11 @@ export namespace ch26 {
 					for (auto& d : vd) {
 						print("{} ", d);
 					}
-					println("");
+					println("");*/
+
+					println("{:n}", vi);
+					println("{:n}", vs);
+					println("{:n}", vd);
 
 				}
 			}

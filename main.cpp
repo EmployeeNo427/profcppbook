@@ -504,8 +504,13 @@ int main() {
 
 	//ch27::exercises::ex1::myanswer::test();
 	//ch27::exercises::ex2::myanswer::test();
-	ch27::exercises::ex3::myanswer::test();
+	//ch27::exercises::ex3::myanswer::test();
 	//ch27::exercises::ex3::textbook::test();
+	/*ch27::exercises::ex4::myanswer::test();
+	ch27::exercises::ex4::myanswer2::test();
+	ch27::exercises::ex4::textbook::test();*/
+	//ch27::exercises::ex5::myanswer::test();
+	ch27::exercises::ex6::myanswer::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

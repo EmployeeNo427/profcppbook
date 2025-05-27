@@ -166,6 +166,7 @@
     <ClCompile Include="ch25_directed_graph_infra\graph_node.ixx" />
     <ClCompile Include="ch26.ixx" />
     <ClCompile Include="ch27.ixx" />
+    <ClCompile Include="ch29.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />

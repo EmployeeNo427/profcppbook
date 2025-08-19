@@ -29,6 +29,7 @@ import ch25;
 import ch26;
 import ch27;
 import ch29;
+import ch31;
 import std;
 
 
@@ -512,7 +513,9 @@ int main() {
 	ch27::exercises::ex4::textbook::test();*/
 	//ch27::exercises::ex5::myanswer::test();
 	//ch27::exercises::ex6::myanswer::test();
-	ch29::exercises::ex1::myanswer::test();
+	//ch29::exercises::ex1::myanswer::test();
+	//ch31::exercises::ex2::test();
+	ch31::exercises::ex3::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

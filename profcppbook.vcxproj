@@ -44,6 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>true</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -167,6 +168,7 @@
     <ClCompile Include="ch26.ixx" />
     <ClCompile Include="ch27.ixx" />
     <ClCompile Include="ch29.ixx" />
+    <ClCompile Include="ch31.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />

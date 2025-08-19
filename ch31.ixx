@@ -72,11 +72,11 @@ export namespace ch31 {
 			};
 
 			struct log {
-				std::source_location loc = std::source_location::current();
+				source_location loc = source_location::current();
 				
 				template<class... Args>
 				explicit log(Args&&... args) {
-					Logger::log(loc, std::forward<Args>(args)...);
+					Logger::log(loc, forward<Args>(args)...);
 				}
 			};
 

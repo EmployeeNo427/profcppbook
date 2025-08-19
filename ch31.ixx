@@ -73,14 +73,11 @@ export namespace ch31 {
 
 			struct log {
 				std::source_location loc = std::source_location::current();
-
+				
 				template<class... Args>
-				void operator()(Args&&... args)&& {
+				explicit log(Args&&... args) {
 					Logger::log(loc, std::forward<Args>(args)...);
 				}
-
-				template<class... Args>
-				void operator()(Args&&...) & = delete; // forbid lvalue use
 			};
 
 
@@ -127,17 +124,17 @@ export namespace ch31 {
 
 			void trickyFunction(ComplicatedClass* obj)
 			{
-				log{}("given argument: ", *obj);
+				log("given argument: ", *obj);
 
 				for (size_t i{ 0 }; i < 100; ++i) {
 					UserCommand cmd{ getNextCommand(obj) };
-					log{}("retrieved cmd ", i, ": ", cmd);
+					log("retrieved cmd ", i, ": ", cmd);
 
 					try {
 						processUserCommand(cmd);
 					}
 					catch (const exception& e) {
-						log{}("exception from processUserCommand(): ", e.what());
+						log("exception from processUserCommand(): ", e.what());
 					}
 				}
 			}
@@ -149,7 +146,7 @@ export namespace ch31 {
 				if (Logger::isLoggingEnabled()) {
 					// Print the command-line arguments to the trace.
 					for (size_t i{ 0 }; i < argc; ++i) {
-						log{}("Argument: ", argv[i]);
+						log("Argument: ", argv[i]);
 					}
 				}
 

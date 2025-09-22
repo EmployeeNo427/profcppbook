@@ -518,7 +518,9 @@ int main() {
 	//ch31::exercises::ex2::test();
 	//ch31::exercises::ex3::test();
 	//ch32::exercises::ex1::test();
-	ch32::exercises::ex2::test();
+	//ch32::exercises::ex2::test();
+	//ch32::exercises::ex3::test();
+	ch32::exercises::ex4::test();
 
 	/*ch13_bookcode::code_1();
 	ch13_bookcode::code_2();

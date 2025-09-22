@@ -13,7 +13,7 @@ export namespace ch32 {
 			class Pointer 
 			{
 			public:
-				explicit Pointer(T* src) : m_ptr{ exchange(src,nullptr) } {}
+				explicit Pointer(T* src) : m_ptr{ src } {}
 				~Pointer() { reset(); }
 
 				//Prevent copy construction and copy assignment.
@@ -45,14 +45,17 @@ export namespace ch32 {
 
 				void reset(T* ptr = nullptr) noexcept 
 				{
-					if (m_ptr) { 
+					if (ptr!=m_ptr) { 
 						delete m_ptr; 
-						m_ptr = nullptr;
+						m_ptr = ptr;
 					}
-					m_ptr = ptr;
 				}
 
 				T& operator*() noexcept
+				{
+					return *m_ptr;
+				}
+				const T& operator*() const noexcept
 				{
 					return *m_ptr;
 				}
@@ -62,17 +65,36 @@ export namespace ch32 {
 
 			void test() {
 				Pointer<string> str_ptr{ new string{"Hello"}};
-				print("str_ptr:{}", *str_ptr);
+				println("str_ptr:{}", *str_ptr);
 				str_ptr.reset(new string{ "World!" });
-				print("str_ptr:{}", *str_ptr);
-				string str3{ *str_ptr.release() };
-				print("str3:{}", str3);
+				println("str_ptr:{}", *str_ptr);
+				if (auto raw = str_ptr.release()) {
+					string str3{ *raw };
+					delete raw;
+					println("str3:{}", str3);
+				}
+				
 
 				Pointer<int> int_ptr{ new int{34} };
-				print("int_ptr:{}", *int_ptr);
+				println("int_ptr:{}", *int_ptr);
 				int_ptr.reset(new int{ 96 });
-				print("int_ptr:{}", *int_ptr);
+				println("int_ptr:{}", *int_ptr);
 				int_ptr.reset();
+
+				{
+					Pointer pointer{ new int{ 42 } };
+					println("{}", *pointer);
+
+					Pointer pointer2{ std::move(pointer) };
+					println("{}", *pointer2);
+
+					Pointer<int> pointer3{ nullptr };
+					pointer3 = std::move(pointer2);
+					println("{}", *pointer3);
+
+					pointer3 = std::move(pointer3);
+					println("{}", *pointer3);
+				}
 			}
 		}
 	}

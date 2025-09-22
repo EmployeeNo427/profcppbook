@@ -129,6 +129,9 @@
     <ClCompile Include="ch31.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ch32.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />

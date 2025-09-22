@@ -169,6 +169,7 @@
     <ClCompile Include="ch27.ixx" />
     <ClCompile Include="ch29.ixx" />
     <ClCompile Include="ch31.ixx" />
+    <ClCompile Include="ch32.ixx" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="database.ixx" />
     <ClCompile Include="Employee.cpp" />

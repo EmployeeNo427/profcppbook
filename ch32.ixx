@@ -255,10 +255,13 @@ export namespace ch32 {
 					return *m_ptr;
 				}
 				
-				template<typename E> requires assignable_from<T&, E>
-				void assign(E e) {
-					*m_ptr = move(e);
+				template<class E>
+					requires std::assignable_from<T&, E&&>
+				void assign(E&& e) {
+					if (!m_ptr) throw std::logic_error("assign on null Pointer");
+					*m_ptr = std::forward<E>(e);
 				}
+
 			private:
 				T* m_ptr{ nullptr };
 			};
@@ -269,6 +272,13 @@ export namespace ch32 {
 					double_ptr.assign(69.4);
 					println("double_ptr:{}", *double_ptr);
 
+				}
+				{
+					Pointer<string> str_ptr{ new string{"What?"}};
+					string test{ "oppps!" };
+					println("str_ptr:{}", *str_ptr);
+					str_ptr.assign(test);
+					println("str_ptr:{}", *str_ptr);
 				}
 				{
 					Pointer<double> double_ptr{ new double{34.5} };
@@ -326,6 +336,14 @@ export namespace ch32 {
 				println("11+22={}", plus_lambda(11, 22));
 				println("1.1+2.2={}", plus_lambda(1.1, 2.2));
 				println("Hello +world!={}", plus_lambda(string("Hello "), string("world!")));
+				//println("1.1+2.2={}", plus_lambda(1.1, 22));
+			}
+			void test_author() {
+				auto sum{ [] <typename T> (const T & a, const T & b) { return a + b; } };
+				println("{}", sum(11, 22));
+				println("{}", sum(1.1, 2.2));
+				println("{}", sum("Hello "s, "world!"s));
+				//println("{}", sum("Hello "s, 1)); // Doesn't work, different types.
 			}
 		}
 

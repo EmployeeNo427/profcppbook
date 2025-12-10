@@ -96,11 +96,11 @@ export namespace ch24 {
 
 			void handle_result(const expected<vector<string>, Error>& expect) {
 				if (expect) {
-					print("expect: {");
+					print("expect: {{");
 					for (const auto& s : *expect) {
 						print(" {} ", s);
 					}
-					println("}");
+					println("}}");
 				}
 				else { println("expect contains an error: {}", expect.error().get_message()); }
 			}

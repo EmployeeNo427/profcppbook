@@ -87,5 +87,12 @@ export namespace ch34 {
                 }
             }
         }
+        namespace ex3 {
+            namespace myanswer {
+                void test() {
+                    /* https://godbolt.org/z/beTosjYxe */
+                }
+            }
+		}
 	}
 }
